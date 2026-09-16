@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Blood · WUB Blood</title>
+  <meta name="description" content="Submit an emergency or scheduled blood request to the World University of Bangladesh donor network.">
+  <link rel="icon" type="image/png" href="assets/WUB-Logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="sidebar-overlay" id="sideOverlay" onclick="closeSide()"></div>
+
+    <!-- SIDEBAR — WUB BLOOD -->
+    <aside class="sidebar" id="side">
+      <div>
+        <a href="index.html" class="sidebar-brand">
+          <div class="brand-icon">
+            <img src="assets/WUB-Logo.png" alt="WUB Blood Logo" class="brand-logo-img">
+            <span class="blood-drop-badge" title="WUB Blood">
+              <svg viewBox="0 0 32 38" fill="none">
+                <path d="M16 2C16 2 2 16.5 2 24C2 31.732 8.268 38 16 38C23.732 38 30 31.732 30 24C30 16.5 16 2 16 2Z" fill="#EF4444"/>
+                <circle cx="16" cy="23" r="4" fill="#FFFFFF" fill-opacity="0.95"/>
+              </svg>
+            </span>
+          </div>
+          <div class="brand-text">
+            <h2>WUB BLOOD</h2>
+            <span>Campus Blood Network</span>
+          </div>
+        </a>
+
+        <nav class="sidebar-nav">
+          <a class="nav-link" href="index.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Home</span>
+          </a>
+          <a class="nav-link" href="find-blood.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <span>Find Blood</span>
+          </a>
+          <a class="nav-link active" href="request-blood.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span>Request Blood</span>
+          </a>
+          <a class="nav-link" href="become-donor.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Become Donor</span>
+          </a>
+          <a class="nav-link" href="about.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>About</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="uni-crest-info">
+          <div class="crest-badge">
+            <img src="assets/WUB-Logo.png" alt="World University of Bangladesh Crest" class="crest-img">
+          </div>
+          <div class="crest-text">World University<br>of Bangladesh</div>
+        </div>
+        <div class="uni-motto">Together We Learn<br>Together We Grow</div>
+        <div class="sidebar-art"></div>
+      </div>
+    </aside>
+
+    <!-- MAIN APP WRAPPER -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" onclick="toggleSide()" aria-label="Open Navigation">☰</button>
+          
+          <a href="index.html" class="mobile-topbar-brand">
+            <img src="assets/WUB-Logo.png" alt="WUB Blood Logo" class="mobile-logo-img">
+            <span class="mobile-brand-title">WUB BLOOD</span>
+          </a>
+
+          <div class="search-container">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="globalSearchInput" class="search-input" placeholder="Search anything...">
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button class="top-action-btn" onclick="toggleNotifications()" aria-label="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notification-badge"></span>
+          </button>
+          <div class="user-profile-menu" id="topbarUserMenuWrap"></div>
+        </div>
+      </header>
+
+      <main class="page-body">
+        
+        <!-- Header exact match for Bottom Left Mockup -->
+        <div class="page-title-header">
+          <div class="page-badge">
+            <svg width="22" height="26" viewBox="0 0 32 38" fill="none">
+              <path d="M16 2C16 2 2 16.5 2 24C2 31.732 8.268 38 16 38C23.732 38 30 31.732 30 24C30 16.5 16 2 16 2Z" fill="#EF4444"/>
+              <circle cx="16" cy="23" r="5" fill="#FFFFFF" fill-opacity="0.9"/>
+            </svg>
+            Request Blood
+          </div>
+          <p>Need blood urgently? Post a request and get help from fellow WUB students.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1.35fr 1fr; gap: 20px; align-items: start;">
+          
+          <!-- Request Blood Form (Exact Bottom Left Mockup Card) -->
+          <section class="form-card-container">
+            <form id="bloodRequestForm" onsubmit="submitRequest(event)">
+              
+              <!-- Row 1: Blood Group Needed & Units -->
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="requestBlood">Blood Group Needed *</label>
+                  <select id="requestBlood" class="form-select" required>
+                    <option value="">Select blood group</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="requestUnits">Units (if known)</label>
+                  <input type="text" id="requestUnits" class="form-input" placeholder="e.g. 1 unit, 2 units...">
+                </div>
+              </div>
+
+              <!-- Row 2: Location & Urgency Level -->
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="requestLocation">Hospital / Dhaka Location *</label>
+                  <select id="requestLocation" class="form-select" required>
+                    <option value="">Select location or hospital</option>
+                    <option value="Kurmitola General Hospital, Uttara">Kurmitola General Hospital, Uttara</option>
+                    <option value="Uttara Modern Hospital">Uttara Modern Hospital</option>
+                    <option value="WUB Permanent Campus (Uttara)">WUB Permanent Campus (Uttara)</option>
+                    <option value="Dhaka Medical College Hospital">Dhaka Medical College Hospital</option>
+                    <option value="National Institute of Neurosciences, Agargaon">National Institute of Neurosciences, Agargaon</option>
+                    <option value="Square Hospital, Panthapath">Square Hospital, Panthapath</option>
+                    <option value="United Hospital, Gulshan">United Hospital, Gulshan</option>
+                    <option value="Evercare Hospital, Bashundhara">Evercare Hospital, Bashundhara</option>
+                    <option value="BIRDEM General Hospital, Shahbagh">BIRDEM General Hospital, Shahbagh</option>
+                    <option value="Mirpur / Pallabi Area">Mirpur / Pallabi Area</option>
+                    <option value="Dhanmondi / Mohammadpur Area">Dhanmondi / Mohammadpur Area</option>
+                    <option value="Badda / Rampura Area">Badda / Rampura Area</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="requestUrgency">Urgency Level</label>
+                  <select id="requestUrgency" class="form-select">
+                    <option value="Emergency">🚨 Emergency (Immediate)</option>
+                    <option value="Urgent">⚠️ Urgent (Within 12 Hours)</option>
+                    <option value="Normal" selected>Normal (Within 2-3 Days)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Row 3: Contact Phone & Reason -->
+              <div class="form-group-full">
+                <label for="requestPhone">Attendant / Requester Contact Phone *</label>
+                <input type="tel" id="requestPhone" class="form-input" placeholder="017XXXXXXXX" required>
+              </div>
+
+              <div class="form-group-full">
+                <label for="requestReason">Medical Reason & Details</label>
+                <textarea id="requestReason" class="form-textarea" placeholder="Please mention patient condition, hospital ward/cabin, and required time..."></textarea>
+              </div>
+
+              <!-- Full width Submit Button -->
+              <button type="submit" class="btn btn-primary btn-block" style="padding: 11px 20px; font-size: 13.5px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Post Request
+              </button>
+
+              <!-- Alert Box from Mockup -->
+              <div class="alert-notice-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <div>
+                  This request will be visible to verified WUB students only.<br>
+                  You can also call the WUB Health Center for immediate support.
+                </div>
+              </div>
+
+            </form>
+          </section>
+
+          <!-- Side Information & Active Requests -->
+          <aside>
+            <div class="form-card-container" style="background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%); margin-bottom: 18px;">
+              <h3 style="font-size: 15px; margin-bottom: 10px; color: var(--primary);">Emergency Contacts</h3>
+              <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12.5px;">
+                <div style="display: flex; justify-content: space-between; padding: 7px 10px; background: #fff; border: 1px solid var(--border); border-radius: 6px;">
+                  <span><b>WUB Medical Center</b></span>
+                  <a href="tel:01700000000" style="color: var(--primary); font-weight: 700;">01700-000000</a>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 10px; background: #fff; border: 1px solid var(--border); border-radius: 6px;">
+                  <span><b>Kurmitola General Hospital</b></span>
+                  <a href="tel:0255062388" style="color: var(--primary); font-weight: 700;">02-55062388</a>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 7px 10px; background: #fff; border: 1px solid var(--border); border-radius: 6px;">
+                  <span><b>National Ambulance</b></span>
+                  <a href="tel:999" style="color: var(--accent); font-weight: 700;">999</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Active Requests Feed -->
+            <div class="form-card-container">
+              <h3 style="font-size: 15px; margin-bottom: 10px;">Active Campus Requests</h3>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Blood</th>
+                      <th>Units</th>
+                      <th>Area</th>
+                      <th>Urgency</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recentRequestsTableBody">
+                    <!-- Dynamically populated via script.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+
+      </main>
+
+      <footer class="app-footer">
+        <div><b>WUB Blood</b> · WUB Student Blood Network</div>
+        <div>World University of Bangladesh · Verified Student Community</div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

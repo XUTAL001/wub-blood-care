@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Blood · WUB Blood</title>
+  <meta name="description" content="Search verified student blood donors within World University of Bangladesh campus community.">
+  <link rel="icon" type="image/png" href="assets/WUB-Logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="sidebar-overlay" id="sideOverlay" onclick="closeSide()"></div>
+
+    <!-- SIDEBAR — WUB BLOOD -->
+    <aside class="sidebar" id="side">
+      <div>
+        <a href="index.html" class="sidebar-brand">
+          <div class="brand-icon">
+            <img src="assets/WUB-Logo.png" alt="WUB Blood Logo" class="brand-logo-img">
+            <span class="blood-drop-badge" title="WUB Blood">
+              <svg viewBox="0 0 32 38" fill="none">
+                <path d="M16 2C16 2 2 16.5 2 24C2 31.732 8.268 38 16 38C23.732 38 30 31.732 30 24C30 16.5 16 2 16 2Z" fill="#EF4444"/>
+                <circle cx="16" cy="23" r="4" fill="#FFFFFF" fill-opacity="0.95"/>
+              </svg>
+            </span>
+          </div>
+          <div class="brand-text">
+            <h2>WUB BLOOD</h2>
+            <span>Campus Blood Network</span>
+          </div>
+        </a>
+
+        <nav class="sidebar-nav">
+          <a class="nav-link" href="index.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Home</span>
+          </a>
+          <a class="nav-link active" href="find-blood.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <span>Find Blood</span>
+          </a>
+          <a class="nav-link" href="request-blood.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span>Request Blood</span>
+          </a>
+          <a class="nav-link" href="become-donor.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Become Donor</span>
+          </a>
+          <a class="nav-link" href="about.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <span>About</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="uni-crest-info">
+          <div class="crest-badge">
+            <img src="assets/WUB-Logo.png" alt="World University of Bangladesh Crest" class="crest-img">
+          </div>
+          <div class="crest-text">World University<br>of Bangladesh</div>
+        </div>
+        <div class="uni-motto">Together We Learn<br>Together We Grow</div>
+        <div class="sidebar-art"></div>
+      </div>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" onclick="toggleSide()" aria-label="Open Navigation">☰</button>
+          
+          <a href="index.html" class="mobile-topbar-brand">
+            <img src="assets/WUB-Logo.png" alt="WUB Blood Logo" class="mobile-logo-img">
+            <span class="mobile-brand-title">WUB BLOOD</span>
+          </a>
+
+          <div class="search-container">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="globalSearchInput" class="search-input" placeholder="Search donors by name, blood group, department...">
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button class="top-action-btn" onclick="toggleNotifications()" aria-label="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notification-badge"></span>
+          </button>
+          <div class="user-profile-menu" id="topbarUserMenuWrap"></div>
+        </div>
+      </header>
+
+      <main class="page-body">
+        <div class="page-title-header">
+          <div class="page-badge">
+            <svg width="22" height="26" viewBox="0 0 32 38" fill="none">
+              <path d="M16 2C16 2 2 16.5 2 24C2 31.732 8.268 38 16 38C23.732 38 30 31.732 30 24C30 16.5 16 2 16 2Z" fill="#EF4444"/>
+              <circle cx="16" cy="23" r="5" fill="#FFFFFF" fill-opacity="0.9"/>
+            </svg>
+            Find Blood
+          </div>
+          <p>Search and connect directly with verified blood donors across all faculties at World University of Bangladesh.</p>
+        </div>
+
+        <section class="find-blood-panel">
+          <!-- Filters Row -->
+          <div class="donor-filter-row">
+            <div class="form-group">
+              <label for="bloodFilter">Blood Group</label>
+              <select id="bloodFilter" class="form-select" onchange="filterDonors()">
+                <option value="">Select blood group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="locationFilter">Dhaka Location</label>
+              <select id="locationFilter" class="form-select" onchange="filterDonors()">
+                <option value="">All Dhaka Locations</option>
+                <option value="Uttara">Uttara</option>
+                <option value="Mirpur">Mirpur</option>
+                <option value="Pallabi">Pallabi</option>
+                <option value="Mohakhali">Mohakhali</option>
+                <option value="Dhanmondi">Dhanmondi</option>
+                <option value="Mohammadpur">Mohammadpur</option>
+                <option value="Gulshan">Gulshan</option>
+                <option value="Banani">Banani</option>
+                <option value="Farmgate">Farmgate</option>
+                <option value="Motijheel">Motijheel</option>
+                <option value="Badda">Badda</option>
+                <option value="Rampura">Rampura</option>
+                <option value="Tejgaon">Tejgaon</option>
+                <option value="Agargaon">Agargaon</option>
+                <option value="Kafrul">Kafrul</option>
+                <option value="Khilkhet">Khilkhet</option>
+                <option value="Bashundhara">Bashundhara</option>
+                <option value="WUB Permanent Campus">WUB Permanent Campus</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="availabilityFilter">Availability</label>
+              <select id="availabilityFilter" class="form-select" onchange="filterDonors()">
+                <option value="">All Donors</option>
+                <option value="available" selected>Available Now (Active)</option>
+                <option value="paused">On Break / Hold</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>&nbsp;</label>
+              <button class="btn btn-primary" onclick="filterDonors()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                Filter Donors
+              </button>
+            </div>
+          </div>
+
+          <!-- Donors Section Bar -->
+          <div class="donors-section-bar">
+            <div class="donors-count-wrap">
+              <h3>Available Donors</h3>
+              <span id="donorCountDisplay">12 donors found</span>
+            </div>
+            <div class="donors-sort-wrap">
+              <label for="donorSortSelect">Sort by:</label>
+              <select id="donorSortSelect" onchange="filterDonors()">
+                <option value="latest">Latest</option>
+                <option value="name">Name</option>
+                <option value="blood">Blood Group</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Cards Grid -->
+          <div class="donor-cards-grid" id="donorCardsContainer">
+            <!-- Dynamically populated via script.js -->
+          </div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <div><b>WUB Blood</b> · Verified Campus Donor Network</div>
+        <div>World University of Bangladesh</div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

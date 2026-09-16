@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register · WUB Blood</title>
+  <meta name="description" content="Create a verified student account on World University of Bangladesh WUB Blood platform.">
+  <link rel="icon" type="image/png" href="assets/WUB-Logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="background: #F8FAFC;">
+  
+  <div class="auth-page-wrapper">
+    
+    <div class="auth-split-card">
+      
+      <!-- LEFT VISUAL BRAND SIDE -->
+      <div class="auth-visual-side">
+        <div class="auth-visual-brand">
+          <div class="auth-logo-badge">
+            <img src="assets/WUB-Logo.png" alt="WUB Blood Logo" class="auth-logo-img">
+            <span class="blood-drop-badge" title="WUB Blood">
+              <svg viewBox="0 0 32 38" fill="none">
+                <path d="M16 2C16 2 2 16.5 2 24C2 31.732 8.268 38 16 38C23.732 38 30 31.732 30 24C30 16.5 16 2 16 2Z" fill="#EF4444"/>
+                <circle cx="16" cy="23" r="4" fill="#FFFFFF" fill-opacity="0.95"/>
+              </svg>
+            </span>
+          </div>
+          <h2>WUB BLOOD</h2>
+          <span>Student Blood Donation Platform</span>
+        </div>
+
+        <div class="auth-campus-preview">
+          <img src="assets/campus-bg.png" alt="WUB Campus">
+        </div>
+
+        <div class="auth-visual-footer">
+          <b>World University of Bangladesh</b>
+          <small>Together We Learn, Together We Grow</small>
+        </div>
+      </div>
+
+      <!-- RIGHT REGISTRATION FORM SIDE -->
+      <div class="auth-form-side">
+        <h2>Create Account</h2>
+        <p>Join the verified WUB Blood student network.</p>
+
+        <form onsubmit="registerAccount(event)">
+          <div class="form-group-full">
+            <label for="regName">Full Name *</label>
+            <input type="text" id="regName" class="form-input" placeholder="Tanvir Alam" required>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="regId">Student ID *</label>
+              <input type="text" id="regId" class="form-input" placeholder="WUB-2023-0842" required>
+            </div>
+
+            <div class="form-group">
+              <label for="regBlood">Blood Group *</label>
+              <select id="regBlood" class="form-select" required>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+" selected>O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group-full">
+            <label for="regEmail">WUB Institutional Email *</label>
+            <input type="email" id="regEmail" class="form-input" placeholder="student@wub.edu.bd" required>
+          </div>
+
+          <div class="form-group-full">
+            <label for="regDept">Department *</label>
+            <select id="regDept" class="form-select" required>
+              <option value="Computer Science &amp; Engineering (CSE)">Computer Science &amp; Engineering (CSE)</option>
+              <option value="Electrical &amp; Electronic Engineering (EEE)">Electrical &amp; Electronic Engineering (EEE)</option>
+              <option value="Business Administration (BBA)">Business Administration (BBA)</option>
+              <option value="English (ENG)">English (ENG)</option>
+              <option value="Pharmacy">Pharmacy</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Law">Law</option>
+              <option value="Public Health">Public Health</option>
+            </select>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="regPhone">Mobile Phone *</label>
+              <input type="tel" id="regPhone" class="form-input" placeholder="01712345678" required>
+            </div>
+            <div class="form-group">
+              <label for="regAddress">Dhaka Area *</label>
+              <select id="regAddress" class="form-select" required>
+                <option value="Uttara">Uttara</option>
+                <option value="Mirpur">Mirpur</option>
+                <option value="Pallabi">Pallabi</option>
+                <option value="Mohakhali">Mohakhali</option>
+                <option value="Dhanmondi">Dhanmondi</option>
+                <option value="Mohammadpur">Mohammadpur</option>
+                <option value="Gulshan">Gulshan</option>
+                <option value="Banani">Banani</option>
+                <option value="Farmgate">Farmgate</option>
+                <option value="Motijheel">Motijheel</option>
+                <option value="Badda">Badda</option>
+                <option value="Rampura">Rampura</option>
+                <option value="Tejgaon">Tejgaon</option>
+                <option value="Agargaon">Agargaon</option>
+                <option value="Kafrul">Kafrul</option>
+                <option value="Khilkhet">Khilkhet</option>
+                <option value="Bashundhara">Bashundhara</option>
+                <option value="WUB Permanent Campus">WUB Permanent Campus</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group-full">
+            <label for="regPassword">Password *</label>
+            <div class="password-input-wrap">
+              <input type="password" id="regPassword" class="form-input" placeholder="Create secure password (min 6 chars)" required style="padding-right: 36px;">
+              <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('regPassword')" aria-label="Toggle password visibility">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="padding: 10px 20px; font-size: 13.5px; margin-top: 8px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+            Create Account
+          </button>
+
+          <div style="text-align: center; margin-top: 16px; font-size: 12px;">
+            <span style="color: var(--text-muted);">Already registered?</span>
+            <a href="login.html" style="color: var(--primary); font-weight: 700; margin-left: 4px;">Login</a>
+          </div>
+
+          <div style="text-align: center; margin-top: 12px;">
+            <a href="index.html" style="font-size: 11.5px; color: var(--primary); display: inline-flex; align-items: center; gap: 4px;">
+              ← Back to Home
+            </a>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

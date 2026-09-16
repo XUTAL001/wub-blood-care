@@ -1,0 +1,13 @@
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs and temp test files
+*.log
+test_out.txt
+test_err.txt
+test_results.txt
+page_*.txt
+dash_out.txt
+admin_out.txt
