@@ -7609,35 +7609,59 @@ input:checked+.slider-switch:before {
 }
 
 /* ==========================================================================
-   OFFICIAL WUB SERIF FORMAT MATCHING USER SAMPLE
-   Classic bold serif typography with university royal blue
+   OFFICIAL WUB SERIF FORMAT MATCHING USER SPECIFICATIONS
+   - Dark Mode: White letters with royal blue outline
+   - Light/White Mode: Deep university theme royal navy (#0E3A8A)
    ========================================================================== */
 .wub-serif-brand,
 .wub-outlined-word {
   font-family: 'Playfair Display', Georgia, 'Times New Roman', serif !important;
   font-weight: 800 !important;
-  color: #1A3D94 !important;
+  color: #0E3A8A !important;
   -webkit-text-stroke: 0 !important;
   text-shadow: none !important;
   letter-spacing: 0.5px;
-  display: inline;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.wub-serif-brand:hover,
+.wub-outlined-word:hover {
+  color: #2563EB !important;
 }
 
 [data-theme="dark"] .wub-serif-brand,
 [data-theme="dark"] .wub-outlined-word {
-  color: #60A5FA !important;
-  -webkit-text-stroke: 0 !important;
-  text-shadow: 0 0 10px rgba(96, 165, 250, 0.35) !important;
+  color: #FFFFFF !important;
+  -webkit-text-stroke: 2.2px #3B82F6 !important;
+  paint-order: stroke fill;
+  letter-spacing: 0.8px;
+  display: inline-block;
+  text-shadow: 
+    -1px -1px 0 #3B82F6,
+     1px -1px 0 #3B82F6,
+    -1px  1px 0 #3B82F6,
+     1px  1px 0 #3B82F6,
+     0 0 8px rgba(59, 130, 246, 0.4) !important;
 }
 
 .sidebar-brand h2 .sidebar-wub-accent,
 .mobile-brand-title .sidebar-wub-accent {
   font-family: 'Playfair Display', Georgia, 'Times New Roman', serif !important;
   font-weight: 800;
-  color: #1A3D94;
+  color: #0E3A8A;
 }
 
 [data-theme="dark"] .sidebar-brand h2 .sidebar-wub-accent,
 [data-theme="dark"] .mobile-brand-title .sidebar-wub-accent {
-  color: #60A5FA;
+  color: #FFFFFF;
+  -webkit-text-stroke: 1.2px #3B82F6;
+  paint-order: stroke fill;
+}
+
+@media (max-width: 640px) {
+  [data-theme="dark"] .wub-serif-brand,
+  [data-theme="dark"] .wub-outlined-word {
+    -webkit-text-stroke: 1.8px #3B82F6 !important;
+  }
 }
