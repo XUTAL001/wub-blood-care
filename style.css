@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    WUB BLOOD — STUDENT BLOOD NETWORK DESIGN SYSTEM
    Pixel-Perfect Implementation matching Official Reference Mockup Sheet
    ========================================================================== */
@@ -7605,65 +7605,5 @@ input:checked+.slider-switch:before {
     top: 14px;
     right: 14px;
     gap: 8px;
-  }
-}
-
-/* ==========================================================================
-   BLUE NEON LIGHT EFFECT DIRECTLY ON THE WORD "WUB"
-   ========================================================================== */
-.wub-neon-text {
-  color: #1D4ED8;
-  -webkit-text-stroke: 1.2px #2563EB;
-  text-shadow: 
-    0 0 5px rgba(37, 99, 235, 0.8),
-    0 0 12px rgba(59, 130, 246, 0.6),
-    0 0 22px rgba(37, 99, 235, 0.4);
-  display: inline;
-  letter-spacing: 0.5px;
-  animation: wubTextNeonPulse 3s ease-in-out infinite;
-  transition: all 0.3s ease;
-}
-
-@keyframes wubTextNeonPulse {
-  0%, 100% {
-    -webkit-text-stroke-color: #2563EB;
-    text-shadow: 
-      0 0 5px rgba(37, 99, 235, 0.8),
-      0 0 12px rgba(59, 130, 246, 0.55),
-      0 0 22px rgba(37, 99, 235, 0.35);
-  }
-  50% {
-    -webkit-text-stroke-color: #3B82F6;
-    text-shadow: 
-      0 0 8px rgba(59, 130, 246, 0.95),
-      0 0 18px rgba(37, 99, 235, 0.75),
-      0 0 30px rgba(59, 130, 246, 0.5);
-  }
-}
-
-[data-theme="dark"] .wub-neon-text {
-  color: #93C5FD;
-  -webkit-text-stroke: 1.2px #60A5FA;
-  text-shadow: 
-    0 0 6px #60A5FA,
-    0 0 16px rgba(96, 165, 250, 0.8),
-    0 0 28px rgba(59, 130, 246, 0.6);
-  animation: wubTextNeonPulseDark 3s ease-in-out infinite;
-}
-
-@keyframes wubTextNeonPulseDark {
-  0%, 100% {
-    -webkit-text-stroke-color: #60A5FA;
-    text-shadow: 
-      0 0 6px #60A5FA,
-      0 0 15px rgba(96, 165, 250, 0.75),
-      0 0 26px rgba(59, 130, 246, 0.5);
-  }
-  50% {
-    -webkit-text-stroke-color: #93C5FD;
-    text-shadow: 
-      0 0 10px rgba(147, 197, 253, 0.95),
-      0 0 22px rgba(96, 165, 250, 0.85),
-      0 0 36px rgba(59, 130, 246, 0.65);
   }
 }
