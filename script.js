@@ -1287,7 +1287,7 @@ function applyLanguageToDOM(lang) {
 
   const heroTitleMain = document.querySelector(".hero-title-main");
   if (heroTitleMain) {
-    heroTitleMain.innerHTML = isBn ? '<span class="wub-outlined-word">WUB</span> ব্লাড<span class="text-accent-red">কেয়ার</span>' : '<span class="wub-outlined-word">WUB</span> Blood<span class="text-accent-red">Care</span>';
+    heroTitleMain.innerHTML = isBn ? '<span class="wub-serif-brand">WUB</span> ব্লাড<span class="text-accent-red">কেয়ার</span>' : '<span class="wub-serif-brand">WUB</span> Blood<span class="text-accent-red">Care</span>';
   }
 
   const heroSubTag = document.querySelector(".hero-subtitle-tag");
