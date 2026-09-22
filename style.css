@@ -3,7 +3,7 @@
    Pixel-Perfect Implementation matching Official Reference Mockup Sheet
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 :root {
   /* Color Palette matching Reference Mockup */
@@ -7606,119 +7606,4 @@ input:checked+.slider-switch:before {
     right: 14px;
     gap: 8px;
   }
-}
-
-/* ==========================================================================
-   OFFICIAL WUB SERIF FORMAT — NAVY FILL WITH WHITE OUTLINE
-   ========================================================================== */
-.wub-serif-brand,
-.wub-outlined-word {
-  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif !important;
-  font-weight: 800 !important;
-  color: #0E3A8A !important;
-  -webkit-text-stroke: 1.8px #FFFFFF !important;
-  paint-order: stroke fill;
-  letter-spacing: 0.8px;
-  display: inline-block;
-  text-shadow: 
-    -1px -1px 0 #FFFFFF,
-     1px -1px 0 #FFFFFF,
-    -1px  1px 0 #FFFFFF,
-     1px  1px 0 #FFFFFF,
-     0 2px 6px rgba(0, 0, 0, 0.25);
-}
-
-[data-theme="dark"] .wub-serif-brand,
-[data-theme="dark"] .wub-outlined-word {
-  color: #0E3A8A !important;
-  -webkit-text-stroke: 2px #FFFFFF !important;
-  paint-order: stroke fill;
-  text-shadow: 
-    -1.2px -1.2px 0 #FFFFFF,
-     1.2px -1.2px 0 #FFFFFF,
-    -1.2px  1.2px 0 #FFFFFF,
-     1.2px  1.2px 0 #FFFFFF,
-     0 0 10px rgba(255, 255, 255, 0.4) !important;
-}
-
-.sidebar-brand h2 .sidebar-wub-accent,
-.mobile-brand-title .sidebar-wub-accent {
-  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif !important;
-  font-weight: 800;
-  color: #0E3A8A;
-  -webkit-text-stroke: 1px #FFFFFF;
-  paint-order: stroke fill;
-}
-
-[data-theme="dark"] .sidebar-brand h2 .sidebar-wub-accent,
-[data-theme="dark"] .mobile-brand-title .sidebar-wub-accent {
-  color: #0E3A8A;
-  -webkit-text-stroke: 1.2px #FFFFFF;
-}
-
-@media (max-width: 640px) {
-  .wub-serif-brand,
-  .wub-outlined-word {
-    -webkit-text-stroke: 1.4px #FFFFFF !important;
-  }
-  .hero-blood-word {
-    -webkit-text-stroke: 1.3px #DC2626 !important;
-  }
-  .hero-care-word {
-    -webkit-text-stroke: 1.3px #FFFFFF !important;
-  }
-}
-
-/* ==========================================================================
-   HEADLINE ACCENTS: BLOOD (RED OUTLINE) & CARE (WHITE OUTLINE)
-   ========================================================================== */
-.hero-blood-word {
-  color: #0A1E3F;
-  -webkit-text-stroke: 1.5px #DC2626;
-  paint-order: stroke fill;
-  font-weight: 800;
-  display: inline-block;
-  text-shadow: 
-    -1px -1px 0 #DC2626,
-     1px -1px 0 #DC2626,
-    -1px  1px 0 #DC2626,
-     1px  1px 0 #DC2626;
-}
-
-[data-theme="dark"] .hero-blood-word {
-  color: #FFFFFF !important;
-  -webkit-text-stroke: 1.8px #EF4444 !important;
-  paint-order: stroke fill;
-  text-shadow: 
-    -1px -1px 0 #EF4444,
-     1px -1px 0 #EF4444,
-    -1px  1px 0 #EF4444,
-     1px  1px 0 #EF4444,
-     0 0 8px rgba(239, 68, 68, 0.35) !important;
-}
-
-.hero-care-word {
-  color: #DC2626 !important;
-  -webkit-text-stroke: 1.6px #FFFFFF !important;
-  paint-order: stroke fill;
-  font-weight: 800;
-  display: inline-block;
-  text-shadow: 
-    -1px -1px 0 #FFFFFF,
-     1px -1px 0 #FFFFFF,
-    -1px  1px 0 #FFFFFF,
-     1px  1px 0 #FFFFFF,
-     0 2px 5px rgba(0, 0, 0, 0.25);
-}
-
-[data-theme="dark"] .hero-care-word {
-  color: #EF4444 !important;
-  -webkit-text-stroke: 1.8px #FFFFFF !important;
-  paint-order: stroke fill;
-  text-shadow: 
-    -1.2px -1.2px 0 #FFFFFF,
-     1.2px -1.2px 0 #FFFFFF,
-    -1.2px  1.2px 0 #FFFFFF,
-     1.2px  1.2px 0 #FFFFFF,
-     0 0 10px rgba(255, 255, 255, 0.35) !important;
 }

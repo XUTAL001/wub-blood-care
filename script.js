@@ -160,7 +160,7 @@ const INITIAL_AUDIT_LOGS = [];
             localStorage.removeItem("wub_blood_current_user");
             localStorage.removeItem("wub_blood_token");
           }
-        } catch (e) { }
+        } catch (e) {}
       }
 
       // Keep only admin accounts in users store
@@ -182,7 +182,7 @@ const INITIAL_AUDIT_LOGS = [];
       localStorage.setItem("wub_blood_notifications_v7", JSON.stringify(INITIAL_NOTIFICATIONS));
       localStorage.setItem("wub_blood_audit_logs_v7", JSON.stringify([]));
       localStorage.setItem("wub_bloodcare_clean_prod_v2", "true");
-    } catch (e) { }
+    } catch (e) {}
   }
 })();
 
@@ -1287,7 +1287,7 @@ function applyLanguageToDOM(lang) {
 
   const heroTitleMain = document.querySelector(".hero-title-main");
   if (heroTitleMain) {
-    heroTitleMain.innerHTML = isBn ? '<span class="wub-serif-brand">WUB</span> <span class="hero-blood-word">ব্লাড</span><span class="hero-care-word">কেয়ার</span>' : '<span class="wub-serif-brand">WUB</span> <span class="hero-blood-word">Blood</span><span class="hero-care-word">Care</span>';
+    heroTitleMain.innerHTML = isBn ? 'ডাব্লিউইউবি ব্লাড<span class="text-accent-red">কেয়ার</span>' : 'WUB Blood<span class="text-accent-red">Care</span>';
   }
 
   const heroSubTag = document.querySelector(".hero-subtitle-tag");
