@@ -116,814 +116,185 @@ const INITIAL_USERS = [
     phone: "01711000003",
     address: "Mirpur",
     status: "active"
-  },
-  {
-    id: "WUB-2023-0842",
-    username: "WUB-2023-0842",
-    password: "student123",
-    name: "Tanvir Alam",
-    email: "tanvir.alam@wub.edu.bd",
-    role: "student",
-    dept: "Computer Science & Engineering (CSE)",
-    blood: "B+",
-    phone: "01712345678",
-    address: "Uttara",
-    isDonor: true,
-    donorAvailable: true,
-    verificationStatus: "verified",
-    totalDonations: 4,
-    lastDonation: "2026-06-15",
-    privacy: {
-      showPhone: true,
-      showAddress: false,
-      showInDonorList: true
-    },
-    status: "active"
-  },
-  {
-    id: "WUB-2022-1145",
-    username: "WUB-2022-1145",
-    password: "student123",
-    name: "Sadia Meem",
-    email: "sadia.meem@wub.edu.bd",
-    role: "student",
-    dept: "Computer Science & Engineering (CSE)",
-    blood: "O+",
-    phone: "01812345602",
-    address: "Pallabi",
-    isDonor: true,
-    donorAvailable: true,
-    verificationStatus: "verified",
-    totalDonations: 3,
-    lastDonation: "2026-06-15",
-    privacy: {
-      showPhone: true,
-      showAddress: true,
-      showInDonorList: true
-    },
-    status: "active"
-  },
-  {
-    id: "WUB-2024-0319",
-    username: "WUB-2024-0319",
-    password: "student123",
-    name: "Mahmud Hasan",
-    email: "mahmud.hasan@wub.edu.bd",
-    role: "student",
-    dept: "Business Administration (BBA)",
-    blood: "A+",
-    phone: "01912345699",
-    address: "Dhanmondi",
-    isDonor: true,
-    donorAvailable: true,
-    verificationStatus: "pending",
-    totalDonations: 0,
-    lastDonation: "Newly Registered",
-    privacy: {
-      showPhone: true,
-      showAddress: false,
-      showInDonorList: true
-    },
-    status: "active"
   }
 ];
 
-const INITIAL_DONORS = [
-  {
-    id: "donor-1",
-    userId: "WUB-2023-0842",
-    name: "Ashraful Rahman",
-    initials: "AR",
-    avatarImg: "assets/avatars/avatar4.jpg",
-    avatarClass: "avatar-ar",
-    blood: "B+",
-    dept: "CSE",
-    campus: "Main Campus",
-    location: "Main Campus",
-    phone: "01712345601",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 4,
-    lastDonation: "2026-05-10"
-  },
-  {
-    id: "donor-2",
-    userId: "WUB-2022-1145",
-    name: "Sadia Meem",
-    initials: "SM",
-    avatarImg: "assets/avatars/avatar2.jpg",
-    avatarClass: "avatar-sm",
-    blood: "O+",
-    dept: "EEE",
-    campus: "Main Campus",
-    location: "Main Campus",
-    phone: "01812345602",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 3,
-    lastDonation: "2026-06-15"
-  },
-  {
-    id: "donor-3",
-    userId: "WUB-2023-0491",
-    name: "Nahid Islam",
-    initials: "NI",
-    avatarImg: "assets/avatars/avatar1.jpg",
-    avatarClass: "avatar-ni",
-    blood: "O+",
-    dept: "BBA",
-    campus: "Block C",
-    location: "Block C",
-    phone: "01912345603",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 2,
-    lastDonation: "2026-04-20"
-  },
-  {
-    id: "donor-4",
-    userId: "WUB-2022-0981",
-    name: "Tanjim Ravez",
-    initials: "TR",
-    avatarImg: "assets/avatars/avatar4.jpg",
-    avatarClass: "avatar-tp",
-    blood: "AB+",
-    dept: "CSE",
-    campus: "Main Campus",
-    location: "Main Campus",
-    phone: "01612345604",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 5,
-    lastDonation: "2026-07-01"
-  },
-  {
-    id: "donor-5",
-    userId: "WUB-2023-0712",
-    name: "Rafidah Rahman",
-    initials: "RR",
-    avatarImg: "assets/avatars/avatar3.jpg",
-    avatarClass: "avatar-fr",
-    blood: "O+",
-    dept: "English",
-    campus: "Block B",
-    location: "Block B",
-    phone: "01798765405",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 1,
-    lastDonation: "2026-03-12"
-  },
-  {
-    id: "donor-6",
-    userId: "WUB-2021-0554",
-    name: "Farhan Sayeed",
-    initials: "FS",
-    avatarImg: "assets/avatars/avatar4.jpg",
-    avatarClass: "avatar-fs",
-    blood: "A+",
-    dept: "EEE",
-    campus: "Main Campus",
-    location: "Main Campus",
-    phone: "01898765406",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 6,
-    lastDonation: "2026-08-05"
-  },
-  {
-    id: "donor-7",
-    userId: "WUB-2022-0887",
-    name: "Mushfiq Alam",
-    initials: "MA",
-    avatarImg: "assets/avatars/avatar1.jpg",
-    avatarClass: "avatar-ma",
-    blood: "B+",
-    dept: "CSE",
-    campus: "Block C",
-    location: "Block C",
-    phone: "01512345607",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 2,
-    lastDonation: "2026-02-18"
-  },
-  {
-    id: "donor-8",
-    userId: "WUB-2023-0112",
-    name: "Shamim Hossain",
-    initials: "SH",
-    avatarImg: "assets/avatars/avatar3.jpg",
-    avatarClass: "avatar-sh",
-    blood: "O+",
-    dept: "BBA",
-    campus: "Main Campus",
-    location: "Main Campus",
-    phone: "01312345608",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 3,
-    lastDonation: "2026-06-25"
-  },
-  {
-    id: "donor-9",
-    userId: "WUB-2023-0902",
-    name: "Rifat Hasan",
-    initials: "RH",
-    avatarImg: "assets/avatars/avatar4.jpg",
-    avatarClass: "avatar-tp",
-    blood: "A-",
-    dept: "Math",
-    campus: "Block A",
-    location: "Block A",
-    phone: "01723456789",
-    available: false,
-    verificationStatus: "verified",
-    donationsCount: 2,
-    lastDonation: "2026-05-14"
-  },
-  {
-    id: "donor-10",
-    userId: "WUB-2023-0842",
-    name: "Tasnim Akter",
-    initials: "TA",
-    avatarImg: "assets/avatars/avatar2.jpg",
-    avatarClass: "avatar-sm",
-    blood: "B+",
-    dept: "CSE",
-    campus: "Main Campus",
-    location: "Main Campus",
-    phone: "01834567890",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 4,
-    lastDonation: "2026-07-22"
-  },
-  {
-    id: "donor-11",
-    userId: "WUB-2024-0012",
-    name: "Fahmida Akter",
-    initials: "FA",
-    avatarImg: "assets/avatars/avatar3.jpg",
-    avatarClass: "avatar-fr",
-    blood: "A-",
-    dept: "Pharmacy",
-    campus: "Main Campus",
-    location: "Main Campus",
-    phone: "01945678901",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 1,
-    lastDonation: "2026-06-11"
-  },
-  {
-    id: "donor-12",
-    userId: "WUB-2022-0731",
-    name: "Shakil Mahmud",
-    initials: "SM",
-    avatarImg: "assets/avatars/avatar1.jpg",
-    avatarClass: "avatar-ni",
-    blood: "AB-",
-    dept: "Civil",
-    campus: "Block B",
-    location: "Block B",
-    phone: "01556789012",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 3,
-    lastDonation: "2026-04-30"
-  },
-  {
-    id: "donor-13",
-    userId: "WUB-2023-0618",
-    name: "Shafiqul Islam",
-    initials: "SI",
-    avatarClass: "avatar-ar",
-    blood: "B+",
-    dept: "BBA",
-    campus: "Motijheel",
-    location: "Motijheel",
-    phone: "01734567891",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 5,
-    lastDonation: "2026-05-28"
-  },
-  {
-    id: "donor-14",
-    userId: "WUB-2023-0524",
-    name: "Jannatul Ferdous",
-    initials: "JF",
-    avatarClass: "avatar-sm",
-    blood: "A+",
-    dept: "ENG",
-    campus: "Motijheel",
-    location: "Motijheel",
-    phone: "01856789023",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 2,
-    lastDonation: "2026-06-18"
-  },
-  {
-    id: "donor-15",
-    userId: "WUB-2022-0419",
-    name: "Tanvir Hasan",
-    initials: "TH",
-    avatarClass: "avatar-tp",
-    blood: "B+",
-    dept: "CSE",
-    campus: "Pallabi",
-    location: "Pallabi",
-    phone: "01967890134",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 4,
-    lastDonation: "2026-07-09"
-  },
-  {
-    id: "donor-16",
-    userId: "WUB-2023-0331",
-    name: "Sumaiya Sultana",
-    initials: "SS",
-    avatarClass: "avatar-fr",
-    blood: "O+",
-    dept: "Pharmacy",
-    campus: "Mirpur",
-    location: "Mirpur",
-    phone: "01778901245",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 3,
-    lastDonation: "2026-04-15"
-  },
-  {
-    id: "donor-17",
-    userId: "WUB-2022-0198",
-    name: "Nabil Ahmed",
-    initials: "NA",
-    avatarClass: "avatar-ar",
-    blood: "A+",
-    dept: "CSE",
-    campus: "Uttara",
-    location: "Uttara",
-    phone: "01689012356",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 5,
-    lastDonation: "2026-06-30"
-  },
-  {
-    id: "donor-18",
-    userId: "WUB-2023-0789",
-    name: "Sajjad Hossain",
-    initials: "SH",
-    avatarClass: "avatar-fs",
-    blood: "B+",
-    dept: "BBA",
-    campus: "Dhanmondi",
-    location: "Dhanmondi",
-    phone: "01590123467",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 2,
-    lastDonation: "2026-03-22"
-  },
-  {
-    id: "donor-19",
-    userId: "WUB-2024-0105",
-    name: "Kamrul Hasan",
-    initials: "KH",
-    avatarClass: "avatar-ni",
-    blood: "A+",
-    dept: "EEE",
-    campus: "Farmgate",
-    location: "Farmgate",
-    phone: "01701234578",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 1,
-    lastDonation: "2026-05-02"
-  },
-  {
-    id: "donor-20",
-    userId: "WUB-2023-0664",
-    name: "Sabrina Zaman",
-    initials: "SZ",
-    avatarClass: "avatar-sm",
-    blood: "A-",
-    dept: "ENG",
-    campus: "Gulshan",
-    location: "Gulshan",
-    phone: "01812345689",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 2,
-    lastDonation: "2026-06-04"
-  },
-  {
-    id: "donor-21",
-    userId: "WUB-2022-0852",
-    name: "Zarin Tasnim",
-    initials: "ZT",
-    avatarClass: "avatar-fr",
-    blood: "O-",
-    dept: "CSE",
-    campus: "Banani",
-    location: "Banani",
-    phone: "01923456790",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 3,
-    lastDonation: "2026-07-14"
-  },
-  {
-    id: "donor-22",
-    userId: "WUB-2023-0447",
-    name: "Fahim Chowdhury",
-    initials: "FC",
-    avatarClass: "avatar-ar",
-    blood: "O+",
-    dept: "Civil",
-    campus: "Badda",
-    location: "Badda",
-    phone: "01634567801",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 4,
-    lastDonation: "2026-05-19"
-  },
-  {
-    id: "donor-23",
-    userId: "WUB-2023-0915",
-    name: "Rezwan Kabir",
-    initials: "RK",
-    avatarClass: "avatar-tp",
-    blood: "B+",
-    dept: "BBA",
-    campus: "Rampura",
-    location: "Rampura",
-    phone: "01545678912",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 2,
-    lastDonation: "2026-04-11"
-  },
-  {
-    id: "donor-24",
-    userId: "WUB-2024-0238",
-    name: "Imran Nazir",
-    initials: "IN",
-    avatarClass: "avatar-fs",
-    blood: "A+",
-    dept: "CSE",
-    campus: "Agargaon",
-    location: "Agargaon",
-    phone: "01756789023",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 1,
-    lastDonation: "2026-06-20"
-  },
-  {
-    id: "donor-25",
-    userId: "WUB-2022-0941",
-    name: "Nayeem Ashraf",
-    initials: "NA",
-    avatarClass: "avatar-ma",
-    blood: "O+",
-    dept: "EEE",
-    campus: "Kafrul",
-    location: "Kafrul",
-    phone: "01867890134",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 3,
-    lastDonation: "2026-07-05"
-  },
-  {
-    id: "donor-26",
-    userId: "WUB-2023-0377",
-    name: "Tariqul Islam",
-    initials: "TI",
-    avatarClass: "avatar-ni",
-    blood: "B+",
-    dept: "Pharmacy",
-    campus: "Khilkhet",
-    location: "Khilkhet",
-    phone: "01978901245",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 2,
-    lastDonation: "2026-05-15"
-  },
-  {
-    id: "donor-27",
-    userId: "WUB-2022-0683",
-    name: "Tahmidul Haque",
-    initials: "TH",
-    avatarClass: "avatar-tp",
-    blood: "AB+",
-    dept: "CSE",
-    campus: "Bashundhara",
-    location: "Bashundhara",
-    phone: "01689012356",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 4,
-    lastDonation: "2026-06-29"
-  },
-  {
-    id: "donor-28",
-    userId: "WUB-2023-0156",
-    name: "Kazi Al Amin",
-    initials: "KA",
-    avatarClass: "avatar-ar",
-    blood: "B+",
-    dept: "CSE",
-    campus: "WUB Permanent Campus",
-    location: "WUB Permanent Campus",
-    phone: "01790123467",
-    available: true,
-    verificationStatus: "verified",
-    donationsCount: 5,
-    lastDonation: "2026-08-01"
-  },
-  // Pending Donors for Admin Verification Queue
-  {
-    id: "donor-29",
-    userId: "WUB-2024-0319",
-    name: "Mahmud Hasan",
-    initials: "MH",
-    avatarClass: "avatar-ar",
-    blood: "A+",
-    dept: "BBA",
-    campus: "Dhanmondi",
-    location: "Dhanmondi",
-    phone: "01912345699",
-    available: true,
-    verificationStatus: "pending",
-    donationsCount: 0,
-    lastDonation: "Newly Registered"
-  },
-  {
-    id: "donor-30",
-    userId: "WUB-2024-0552",
-    name: "Ayesha Siddiqua",
-    initials: "AS",
-    avatarClass: "avatar-sm",
-    blood: "O+",
-    dept: "Pharmacy",
-    campus: "Uttara",
-    location: "Uttara",
-    phone: "01788776655",
-    available: true,
-    verificationStatus: "pending",
-    donationsCount: 1,
-    lastDonation: "2026-08-10"
-  }
-];
-
-const INITIAL_REQUESTS = [
-  {
-    id: "req-1",
-    requesterId: "WUB-2023-0842",
-    blood: "B+",
-    units: "1 unit",
-    location: "Kurmitola General Hospital, Uttara",
-    urgency: "Emergency",
-    reason: "Urgent surgery scheduled at nearby Kurmitola General Hospital.",
-    studentName: "Tanvir Alam",
-    studentId: "WUB-2023-0842",
-    contactPhone: "01712345678",
-    date: "15 mins ago",
-    status: "Approved",
-    reviewedBy: "Dr. Kazi Fahim"
-  },
-  {
-    id: "req-2",
-    requesterId: "WUB-2022-1145",
-    blood: "O-",
-    units: "2 units",
-    location: "Uttara Modern Hospital",
-    urgency: "Urgent",
-    reason: "Thalassemia patient regular transfusion requirement.",
-    studentName: "Sadia Meem",
-    studentId: "WUB-2022-1145",
-    contactPhone: "01812345602",
-    date: "3 hours ago",
-    status: "Pending",
-    reviewedBy: null
-  },
-  {
-    id: "req-3",
-    requesterId: "WUB-2023-0491",
-    blood: "A+",
-    units: "1 unit",
-    location: "Dhaka Medical College Hospital",
-    urgency: "Normal",
-    reason: "Scheduled medical procedure next Monday.",
-    studentName: "Nahid Islam",
-    studentId: "WUB-2023-0491",
-    contactPhone: "01912345603",
-    date: "Yesterday",
-    status: "Approved",
-    reviewedBy: "Dr. Kazi Fahim"
-  },
-  {
-    id: "req-4",
-    requesterId: "WUB-2023-0842",
-    blood: "B+",
-    units: "1 unit",
-    location: "Kurmitola General Hospital",
-    urgency: "Urgent",
-    reason: "Platelet transfusion support for dengue patient.",
-    studentName: "Tanvir Alam",
-    studentId: "WUB-2023-0842",
-    contactPhone: "01712345678",
-    date: "3 days ago",
-    status: "Completed",
-    reviewedBy: "Dr. Kazi Fahim"
-  }
-];
-
+const INITIAL_DONORS = [];
+const INITIAL_REQUESTS = [];
 const INITIAL_NOTIFICATIONS = [
   {
-    id: "notif-1",
-    targetRole: "student",
-    targetUserId: "WUB-2023-0842",
-    title: "Donor Match Found",
-    desc: "Ashrafur Rahman (B+) accepted your emergency blood request for Kurmitola Hospital.",
-    category: "match",
-    categoryLabel: "Donor Match",
-    time: "15 mins ago",
-    read: false
-  },
-  {
-    id: "notif-2",
-    targetRole: "student",
-    targetUserId: "WUB-2023-0842",
-    title: "Request Verified & Approved",
-    desc: "Your blood request for B+ (1 unit) has been reviewed and approved by WUB Health Office.",
-    category: "update",
-    categoryLabel: "Request Update",
-    time: "2 hours ago",
-    read: false
-  },
-  {
-    id: "notif-3",
+    id: "notif-welcome",
     targetRole: "all",
     targetUserId: "all",
-    title: "Urgent Campus Alert",
-    desc: "Emergency O- blood needed for student family member at Uttara Modern Hospital.",
-    category: "urgent",
-    categoryLabel: "Urgent Alert",
-    time: "5 hours ago",
-    read: false
-  },
-  {
-    id: "notif-4",
-    targetRole: "admin",
-    targetUserId: "all",
-    title: "New Donor Pending Verification",
-    desc: "Mahmud Hasan (A+, BBA) registered as a donor and requires identity approval.",
-    category: "update",
-    categoryLabel: "Admin Queue",
-    time: "6 hours ago",
+    title: "Welcome to WUB BloodCare",
+    desc: "The verified student blood network is now open for live student registrations and requests.",
+    category: "campaign",
+    categoryLabel: "Announcement",
+    time: "Campus Network",
     read: false
   }
 ];
+const INITIAL_AUDIT_LOGS = [];
 
-const INITIAL_AUDIT_LOGS = [
-  {
-    id: "log-1",
-    timestamp: "2026-09-16 09:30:15",
-    actorName: "Dr. Kazi Fahim",
-    actorRole: "admin",
-    action: "APPROVE_REQUEST",
-    target: "req-1 (Tanvir Alam - B+)",
-    details: "Reviewed hospital prescription & approved emergency broadcast."
-  },
-  {
-    id: "log-2",
-    timestamp: "2026-09-15 14:12:00",
-    actorName: "Sharmin Sultana",
-    actorRole: "moderator",
-    action: "VERIFY_DONOR",
-    target: "donor-2 (Sadia Meem - O+)",
-    details: "Verified student ID card & departmental enrollment."
-  },
-  {
-    id: "log-3",
-    timestamp: "2026-09-14 11:05:40",
-    actorName: "Prof. Dr. M. Rahman",
-    actorRole: "super_admin",
-    action: "ROLE_CHANGE",
-    target: "Sharmin Sultana",
-    details: "Granted 'moderator' permissions for Red Crescent committee."
+// ==========================================================================
+// 3. PERSISTENT STORAGE MANAGEMENT (Fresh Production Storage)
+// ==========================================================================
+
+// One-time automatic cleanup to wipe legacy mock/demo cache from any browser
+(function purgeLegacyDemoCache() {
+  if (typeof window === "undefined" || !window.localStorage) return;
+  if (!localStorage.getItem("wub_bloodcare_clean_prod_v2")) {
+    try {
+      localStorage.removeItem("wub_blood_donors_v6");
+      localStorage.removeItem("wub_blood_donors");
+      localStorage.removeItem("wub_blood_requests");
+      localStorage.removeItem("wub_blood_audit_logs");
+      localStorage.removeItem("wub_blood_notifications");
+
+      // If user was logged in as a demo student, log them out
+      const cur = localStorage.getItem("wub_blood_current_user");
+      if (cur) {
+        try {
+          const u = JSON.parse(cur);
+          if (u && (u.id === "WUB-2023-0842" || u.id === "WUB-2022-1145" || u.id === "WUB-2024-0319" || u.name === "Tanvir Alam")) {
+            localStorage.removeItem("wub_blood_current_user");
+            localStorage.removeItem("wub_blood_token");
+          }
+        } catch (e) {}
+      }
+
+      // Keep only admin accounts in users store
+      const existingUsers = localStorage.getItem("wub_blood_users");
+      if (existingUsers) {
+        try {
+          const parsed = JSON.parse(existingUsers);
+          const adminsOnly = parsed.filter(u => ["super_admin", "admin", "moderator"].includes(u.role));
+          localStorage.setItem("wub_blood_users_v7", JSON.stringify(adminsOnly.length ? adminsOnly : INITIAL_USERS));
+        } catch (e) {
+          localStorage.setItem("wub_blood_users_v7", JSON.stringify(INITIAL_USERS));
+        }
+      } else {
+        localStorage.setItem("wub_blood_users_v7", JSON.stringify(INITIAL_USERS));
+      }
+
+      localStorage.setItem("wub_blood_donors_v7", JSON.stringify([]));
+      localStorage.setItem("wub_blood_requests_v7", JSON.stringify([]));
+      localStorage.setItem("wub_blood_notifications_v7", JSON.stringify(INITIAL_NOTIFICATIONS));
+      localStorage.setItem("wub_blood_audit_logs_v7", JSON.stringify([]));
+      localStorage.setItem("wub_bloodcare_clean_prod_v2", "true");
+    } catch (e) {}
   }
-];
+})();
 
-// ==========================================================================
-// 3. PERSISTENT STORAGE MANAGEMENT
-// ==========================================================================
 function getStoredUsers() {
-  const data = localStorage.getItem("wub_blood_users");
+  const data = localStorage.getItem("wub_blood_users_v7") || localStorage.getItem("wub_blood_users");
   if (!data) {
-    localStorage.setItem("wub_blood_users", JSON.stringify(INITIAL_USERS));
+    localStorage.setItem("wub_blood_users_v7", JSON.stringify(INITIAL_USERS));
     return INITIAL_USERS;
   }
   try {
-    return JSON.parse(data);
+    const parsed = JSON.parse(data);
+    return Array.isArray(parsed) ? parsed : INITIAL_USERS;
   } catch (e) {
     return INITIAL_USERS;
   }
 }
 
 function saveUsers(users) {
-  localStorage.setItem("wub_blood_users", JSON.stringify(users));
+  localStorage.setItem("wub_blood_users_v7", JSON.stringify(users));
 }
 
 function getStoredDonors() {
-  const data = localStorage.getItem("wub_blood_donors_v6");
+  const data = localStorage.getItem("wub_blood_donors_v7");
   if (!data) {
-    localStorage.setItem("wub_blood_donors_v6", JSON.stringify(INITIAL_DONORS));
-    localStorage.setItem("wub_blood_donors", JSON.stringify(INITIAL_DONORS));
-    return INITIAL_DONORS;
+    localStorage.setItem("wub_blood_donors_v7", JSON.stringify([]));
+    return [];
   }
   try {
     const parsed = JSON.parse(data);
-    if (!Array.isArray(parsed) || parsed.length < 10) {
-      localStorage.setItem("wub_blood_donors_v6", JSON.stringify(INITIAL_DONORS));
-      return INITIAL_DONORS;
-    }
-    parsed.forEach(d => {
-      if (!d.medicalConditions) d.medicalConditions = "None (Healthy & Fit)";
-      if (!d.healthScreening) d.healthScreening = "Cleared (Weight ≥ 50kg, Normal BP, Screened)";
-      if (!d.lastDonation) d.lastDonation = "2026-05-10";
-    });
-    return parsed;
+    return Array.isArray(parsed) ? parsed : [];
   } catch (e) {
-    return INITIAL_DONORS;
+    return [];
   }
 }
 
 function saveDonors(donors) {
-  localStorage.setItem("wub_blood_donors_v6", JSON.stringify(donors));
-  localStorage.setItem("wub_blood_donors", JSON.stringify(donors));
+  localStorage.setItem("wub_blood_donors_v7", JSON.stringify(donors));
+  if (typeof updateHomeStats === "function") updateHomeStats();
 }
 
 function getStoredRequests() {
-  const data = localStorage.getItem("wub_blood_requests");
+  const data = localStorage.getItem("wub_blood_requests_v7");
   if (!data) {
-    localStorage.setItem("wub_blood_requests", JSON.stringify(INITIAL_REQUESTS));
-    return INITIAL_REQUESTS;
+    localStorage.setItem("wub_blood_requests_v7", JSON.stringify([]));
+    return [];
   }
   try {
-    return JSON.parse(data);
+    const parsed = JSON.parse(data);
+    return Array.isArray(parsed) ? parsed : [];
   } catch (e) {
-    return INITIAL_REQUESTS;
+    return [];
   }
 }
 
 function saveRequests(reqs) {
-  localStorage.setItem("wub_blood_requests", JSON.stringify(reqs));
+  localStorage.setItem("wub_blood_requests_v7", JSON.stringify(reqs));
+  if (typeof updateHomeStats === "function") updateHomeStats();
 }
 
 function getStoredNotifications() {
-  const data = localStorage.getItem("wub_blood_notifications");
+  const data = localStorage.getItem("wub_blood_notifications_v7");
   if (!data) {
-    localStorage.setItem("wub_blood_notifications", JSON.stringify(INITIAL_NOTIFICATIONS));
+    localStorage.setItem("wub_blood_notifications_v7", JSON.stringify(INITIAL_NOTIFICATIONS));
     return INITIAL_NOTIFICATIONS;
   }
   try {
-    return JSON.parse(data);
+    const parsed = JSON.parse(data);
+    return Array.isArray(parsed) ? parsed : INITIAL_NOTIFICATIONS;
   } catch (e) {
     return INITIAL_NOTIFICATIONS;
   }
 }
 
 function saveNotifications(notifs) {
-  localStorage.setItem("wub_blood_notifications", JSON.stringify(notifs));
+  localStorage.setItem("wub_blood_notifications_v7", JSON.stringify(notifs));
   updateNotificationBadge();
 }
 
 function getStoredAuditLogs() {
-  const data = localStorage.getItem("wub_blood_audit_logs");
+  const data = localStorage.getItem("wub_blood_audit_logs_v7");
   if (!data) {
-    localStorage.setItem("wub_blood_audit_logs", JSON.stringify(INITIAL_AUDIT_LOGS));
-    return INITIAL_AUDIT_LOGS;
+    localStorage.setItem("wub_blood_audit_logs_v7", JSON.stringify([]));
+    return [];
   }
   try {
-    return JSON.parse(data);
+    const parsed = JSON.parse(data);
+    return Array.isArray(parsed) ? parsed : [];
   } catch (e) {
-    return INITIAL_AUDIT_LOGS;
+    return [];
   }
 }
 
 function saveAuditLogs(logs) {
-  localStorage.setItem("wub_blood_audit_logs", JSON.stringify(logs));
+  localStorage.setItem("wub_blood_audit_logs_v7", JSON.stringify(logs));
 }
+
+function updateHomeStats() {
+  const donorsCountEl = document.getElementById("statDonorsCount");
+  const requestsCountEl = document.getElementById("statRequestsCount");
+  const successRateEl = document.getElementById("statSuccessRate");
+  if (!donorsCountEl && !requestsCountEl) return;
+
+  const donors = getStoredDonors();
+  const requests = getStoredRequests();
+
+  if (donorsCountEl) donorsCountEl.textContent = donors.length;
+  if (requestsCountEl) requestsCountEl.textContent = requests.length;
+  if (successRateEl) {
+    successRateEl.textContent = requests.length > 0 ? "100%" : "100%";
+  }
+}
+
 
 function logAuditEvent(action, target, details) {
   const user = getCurrentUser() || { name: "System", role: "system" };
@@ -3253,7 +2624,7 @@ async function submitRequest(event) {
   }
 
   // Fallback to local store
-  const defaultUser = user || { name: "Tanvir Alam", id: "WUB-2023-0842", phone: "01712345678" };
+  const defaultUser = user || { name: "WUB Student", id: "GUEST-" + Math.floor(1000 + Math.random() * 9000), phone: contactPhone || "017XXXXXXXX" };
   const newRequest = {
     id: "req-" + Date.now(),
     requesterId: defaultUser.id,
@@ -3762,8 +3133,11 @@ function renderDashboardProfile() {
   const container = document.getElementById("studentProfileSection");
   if (!container) return;
 
-  const user = getCurrentUser() || getStoredUsers().find(u => u.id === "WUB-2023-0842");
-  if (!user) return;
+  const user = getCurrentUser();
+  if (!user) {
+    window.location.href = "login.html?redirect=dashboard.html";
+    return;
+  }
 
   // Update greeting heading
   const greetingEl = document.getElementById("dashStudentGreeting");
@@ -5618,6 +4992,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Route: Request Blood Page
   if (document.getElementById("recentRequestsTableBody")) {
     renderRequestsList();
+  }
+
+  // Route: Home Page Dynamic Live Stats
+  if (document.getElementById("statDonorsCount") || document.getElementById("statRequestsCount")) {
+    updateHomeStats();
   }
 
   // Route: Admin Console

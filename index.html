@@ -139,17 +139,10 @@
           <button class="close-btn" onclick="toggleNotifications()">✕</button>
         </div>
         <div class="notif-body" id="notifList">
-          <div class="notif-item unread">
-            <span class="notif-dot"></span>
-            <div>
-              <p><strong>Emergency: O+ Blood Needed</strong> at Uttara Ahsania Mission Hospital.</p>
-              <small>15 mins ago</small>
-            </div>
-          </div>
           <div class="notif-item">
             <div>
-              <p>Welcome to <strong>WUB BloodCare</strong>! Connect and donate to help fellow students.</p>
-              <small>1 hour ago</small>
+              <p>Welcome to <strong>WUB BloodCare</strong>! The verified student blood network is now live.</p>
+              <small>Campus Network</small>
             </div>
           </div>
         </div>
@@ -323,7 +316,7 @@
                 </svg>
               </div>
               <div class="stat-card-details">
-                <div class="stat-digit-val">500+</div>
+                <div class="stat-digit-val" id="statDonorsCount">0</div>
                 <div class="stat-card-name">Registered Donors</div>
                 <div class="stat-card-desc">Active WUB students</div>
               </div>
@@ -338,7 +331,7 @@
                 </svg>
               </div>
               <div class="stat-card-details">
-                <div class="stat-digit-val">120+</div>
+                <div class="stat-digit-val" id="statRequestsCount">0</div>
                 <div class="stat-card-name">Blood Requests</div>
                 <div class="stat-card-desc">Completed successfully</div>
               </div>
@@ -355,7 +348,7 @@
                 </svg>
               </div>
               <div class="stat-card-details">
-                <div class="stat-digit-val">95%</div>
+                <div class="stat-digit-val" id="statSuccessRate">100%</div>
                 <div class="stat-card-name">Success Rate</div>
                 <div class="stat-card-desc">Donor match rate</div>
               </div>
