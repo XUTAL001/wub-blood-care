@@ -7607,3 +7607,102 @@ input:checked+.slider-switch:before {
     gap: 8px;
   }
 }
+
+/* ==========================================================================
+   BLUE NEON LIGHT BORDER FOR WUB BRAND TEXT
+   ========================================================================== */
+.wub-neon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+  line-height: 1;
+  padding: 2px 10px 3px 10px;
+  margin-right: 8px;
+  border-radius: 9px;
+  border: 2px solid #2563EB;
+  color: #1D4ED8;
+  background: rgba(37, 99, 235, 0.07);
+  box-shadow: 
+    0 0 6px rgba(37, 99, 235, 0.45),
+    0 0 16px rgba(37, 99, 235, 0.22),
+    inset 0 0 6px rgba(37, 99, 235, 0.15);
+  text-shadow: 0 0 8px rgba(37, 99, 235, 0.35);
+  letter-spacing: 0.5px;
+  vertical-align: 1px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: wubNeonPulse 2.8s ease-in-out infinite;
+}
+
+.wub-neon-badge:hover {
+  border-color: #1D4ED8;
+  box-shadow: 
+    0 0 10px rgba(37, 99, 235, 0.75),
+    0 0 24px rgba(37, 99, 235, 0.45),
+    inset 0 0 9px rgba(37, 99, 235, 0.25);
+  transform: translateY(-1px);
+}
+
+@keyframes wubNeonPulse {
+  0%, 100% {
+    border-color: #2563EB;
+    box-shadow: 
+      0 0 6px rgba(37, 99, 235, 0.45),
+      0 0 14px rgba(37, 99, 235, 0.2),
+      inset 0 0 6px rgba(37, 99, 235, 0.12);
+  }
+  50% {
+    border-color: #3B82F6;
+    box-shadow: 
+      0 0 12px rgba(59, 130, 246, 0.7),
+      0 0 24px rgba(37, 99, 235, 0.4),
+      inset 0 0 10px rgba(59, 130, 246, 0.25);
+  }
+}
+
+/* Dark Mode Neon Glow */
+[data-theme="dark"] .wub-neon-badge {
+  border-color: #60A5FA;
+  color: #93C5FD;
+  background: rgba(37, 99, 235, 0.2);
+  box-shadow: 
+    0 0 8px rgba(96, 165, 250, 0.7),
+    0 0 22px rgba(59, 130, 246, 0.5),
+    inset 0 0 8px rgba(96, 165, 250, 0.28);
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.7);
+  animation: wubNeonPulseDark 2.8s ease-in-out infinite;
+}
+
+[data-theme="dark"] .wub-neon-badge:hover {
+  border-color: #93C5FD;
+  box-shadow: 
+    0 0 14px rgba(147, 197, 253, 0.9),
+    0 0 28px rgba(96, 165, 250, 0.65),
+    inset 0 0 12px rgba(147, 197, 253, 0.35);
+}
+
+@keyframes wubNeonPulseDark {
+  0%, 100% {
+    border-color: #60A5FA;
+    box-shadow: 
+      0 0 8px rgba(96, 165, 250, 0.7),
+      0 0 18px rgba(59, 130, 246, 0.42),
+      inset 0 0 8px rgba(96, 165, 250, 0.22);
+  }
+  50% {
+    border-color: #93C5FD;
+    box-shadow: 
+      0 0 15px rgba(147, 197, 253, 0.9),
+      0 0 28px rgba(96, 165, 250, 0.65),
+      inset 0 0 12px rgba(147, 197, 253, 0.35);
+  }
+}
+
+@media (max-width: 640px) {
+  .wub-neon-badge {
+    padding: 1px 7px 2px 7px;
+    margin-right: 5px;
+    border-radius: 7px;
+    border-width: 1.75px;
+  }
+}

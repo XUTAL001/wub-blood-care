@@ -1287,7 +1287,7 @@ function applyLanguageToDOM(lang) {
 
   const heroTitleMain = document.querySelector(".hero-title-main");
   if (heroTitleMain) {
-    heroTitleMain.innerHTML = isBn ? 'ডাব্লিউইউবি ব্লাড<span class="text-accent-red">কেয়ার</span>' : 'WUB Blood<span class="text-accent-red">Care</span>';
+    heroTitleMain.innerHTML = isBn ? '<span class="wub-neon-badge">WUB</span> ব্লাড<span class="text-accent-red">কেয়ার</span>' : '<span class="wub-neon-badge">WUB</span> Blood<span class="text-accent-red">Care</span>';
   }
 
   const heroSubTag = document.querySelector(".hero-subtitle-tag");
@@ -1335,7 +1335,7 @@ function applyLanguageToDOM(lang) {
   if (whyTag) whyTag.textContent = isBn ? "আপনার অবদান মূল্যবান" : "Your Support Matters";
 
   const whyHead = document.querySelector(".why-choose-heading");
-  if (whyHead) whyHead.innerHTML = isBn ? 'কেন ডাব্লিউইউবি ব্লাড<span class="text-accent-red">কেয়ার</span><br>বেছে নেবেন?' : 'Why Choose<br>WUB Blood<span class="text-accent-red">Care</span>?';
+  if (whyHead) whyHead.innerHTML = isBn ? 'কেন <span class="wub-neon-badge">WUB</span> ব্লাড<span class="text-accent-red">কেয়ার</span><br>বেছে নেবেন?' : 'Why Choose<br><span class="wub-neon-badge">WUB</span> Blood<span class="text-accent-red">Care</span>?';
 
   const whyP = document.querySelector(".why-choose-paragraph");
   if (whyP) whyP.textContent = isBn ? "আমরা শুধু একটি প্ল্যাটফর্ম নই। বিপদের মুহূর্তে একে অপরের পাশে দাঁড়ানো ওয়ার্ল্ড ইউনিভার্সিটির শিক্ষার্থীদের এক বিশ্বস্ত পরিবার।" : "We're more than just a platform. We're a community of WUB students helping each other in times of need.";
