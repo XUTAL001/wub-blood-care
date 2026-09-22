@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile · WUB BloodCare</title>
+  <meta name="description"
+    content="Manage your WUB BloodCare student profile, verification status, and donor settings.">
+  <link rel="icon" type="image/png" href="assets/WUB-Logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app-container">
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="sidebar-overlay" id="sideOverlay" onclick="closeSide()"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="side">
+      <div class="sidebar-top-section">
+        <div class="sidebar-header-row">
+          <a href="index.html" class="sidebar-brand">
+            <div class="brand-icon">
+              <img src="assets/WUB-Logo.png" alt="WUB Logo" class="brand-logo-img">
+            </div>
+            <div class="brand-text">
+              <h2>WUB BloodCare</h2>
+              <span>Students Helping Students.</span>
+            </div>
+          </a>
+          <button class="sidebar-close-btn" onclick="closeSide()" aria-label="Close navigation menu">✕</button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a class="nav-link" href="index.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            <span>Home</span>
+          </a>
+          <a class="nav-link" href="find-blood.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <span>Find Blood</span>
+          </a>
+          <a class="nav-link" href="request-blood.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="16" />
+              <line x1="8" y1="12" x2="16" y2="12" />
+            </svg>
+            <span>Request Blood</span>
+          </a>
+          <a class="nav-link" href="become-donor.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            <span>Become Donor</span>
+          </a>
+          <a class="nav-link" href="dashboard.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+            </svg>
+            <span>Dashboard</span>
+          </a>
+          <a class="nav-link active" href="profile.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span>Profile</span>
+          </a>
+          <a class="nav-link" href="about.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+            <span>About</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="uni-crest-info">
+          <div class="crest-badge">
+            <img src="assets/WUB-Logo.png" alt="WUB Crest" class="crest-img">
+          </div>
+          <div class="crest-text">World University<br>of Bangladesh</div>
+        </div>
+        <div class="uni-motto-cursive">Together We Learn<br>Together We Grow</div>
+        <div class="sidebar-art"></div>
+      </div>
+    </aside>
+
+    <!-- MAIN APP WRAPPER WITH WUB CAMPUS BACKGROUND -->
+    <div class="main-wrapper wub-campus-bg">
+
+      <!-- TOPBAR -->
+      <header class="topbar glass-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" onclick="toggleSide()" aria-label="Open Navigation">☰</button>
+          <a href="index.html" class="mobile-topbar-brand">
+            <img src="assets/WUB-Logo.png" alt="WUB" class="mobile-logo-img">
+            <span class="mobile-brand-title">WUB BloodCare</span>
+          </a>
+
+          <div class="topbar-search-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <input type="text" id="globalSearchInput" placeholder="Search donors by name, blood group, or location...">
+          </div>
+        </div>
+
+        <div class="topbar-right-v2">
+          <div class="glass-merged-pill">
+            <button class="merged-notif-btn" onclick="toggleNotifications(event)" aria-label="Notifications"
+              title="Notifications">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+              </svg>
+              <span class="notif-dot-red"></span>
+            </button>
+            <div class="merged-pill-divider"></div>
+            <div class="user-profile-menu merged-profile-wrap" id="topbarUserMenuWrap"></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- NOTIFICATIONS MODAL -->
+      <div class="notifications-panel" id="notificationsPanel">
+        <div class="notif-header">
+          <h3>Notifications</h3>
+          <button class="close-btn" onclick="toggleNotifications()">✕</button>
+        </div>
+        <div class="notif-body" id="notifList"></div>
+      </div>
+
+      <!-- PAGE CONTENT -->
+      <main class="page-body">
+
+        <div class="profile-split-grid">
+
+          <!-- LEFT COLUMN: Profile Card & Verification Status -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+
+            <!-- Student Profile Badge Card -->
+            <div class="card" style="text-align: center; padding: 28px 20px;">
+              <div style="position: relative; width: 84px; height: 84px; margin: 0 auto 14px auto;">
+                <div id="profileAvatarContainer"
+                  style="width: 100%; height: 100%; border-radius: 50%; background: #0E3A8A; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; border: 3px solid #E2E8F0; overflow: hidden;">
+                  <span id="profileInitials">WUB</span>
+                </div>
+                <label for="avatarUploadInput"
+                  style="position: absolute; bottom: 0; right: 0; background: #2563EB; color: #fff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);"
+                  title="Change Photo">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                    <circle cx="12" cy="13" r="4" />
+                  </svg>
+                </label>
+                <input type="file" id="avatarUploadInput" accept="image/*" style="display: none;"
+                  onchange="handleAvatarUpload(event)">
+              </div>
+
+              <h2 id="profileName" style="font-size: 20px; font-weight: 800; margin-bottom: 2px; color: #0A1E3F;">
+                Loading...</h2>
+              <div id="profileStudentId" style="font-size: 13px; font-weight: 700; color: #1E293B; margin-bottom: 8px;">
+                ID: ---</div>
+
+              <div id="verificationBadgeWrap" style="margin-bottom: 16px;">
+                <span class="badge" style="background: #FEF3C7; color: #B45309; font-weight: 700;">Checking
+                  verification...</span>
+              </div>
+
+              <div
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border-top: 1px solid #CBD5E1; padding-top: 16px; font-size: 12.5px; text-align: left;">
+                <div>
+                  <span style="color: #1E293B; font-weight: 600; display: block;">Blood Group</span>
+                  <b id="profileBlood" style="font-size: 16px; color: #DC2626; font-weight: 800;">--</b>
+                </div>
+                <div>
+                  <span style="color: #1E293B; font-weight: 600; display: block;">Phone</span>
+                  <b id="profilePhone" style="color: #0A1E3F; font-weight: 700;">--</b>
+                </div>
+                <div>
+                  <span style="color: #1E293B; font-weight: 600; display: block;">Department</span>
+                  <b id="profileDept" style="color: #0A1E3F; font-weight: 700;">--</b>
+                </div>
+                <div>
+                  <span style="color: #1E293B; font-weight: 600; display: block;">Donation Area</span>
+                  <b id="profileLocation" style="color: #0A1E3F; font-weight: 700;">--</b>
+                </div>
+                <div style="grid-column: 1 / -1;">
+                  <span style="color: #1E293B; font-weight: 600; display: block;">Donor Availability</span>
+                  <b id="profileDonorStatus" style="color: #059669; font-weight: 700;">--</b>
+                </div>
+              </div>
+            </div>
+
+            <!-- Student ID Verification Document Card -->
+            <div class="card" style="padding: 22px;">
+              <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 8px; color: #0A1E3F;">WUB Student ID
+                Verification</h3>
+              <p style="font-size: 13px; color: #1E293B; line-height: 1.5; margin-bottom: 14px;">
+                To maintain campus security, only verified WUB students are permitted to create blood requests and
+                become active donors.
+              </p>
+
+              <div id="verificationAlertBox"
+                style="padding: 12px; border-radius: 8px; font-size: 12.5px; margin-bottom: 14px; display: none;"></div>
+
+              <form id="verificationUploadForm" onsubmit="submitStudentVerification(event)">
+                <div class="form-group-full">
+                  <label for="verStudentId" style="font-size: 13px; font-weight: 700; color: #0A1E3F;">Confirm WUB
+                    Student ID</label>
+                  <input type="text" id="verStudentId" class="form-input" placeholder="e.g. WUB-2023-0452" required>
+                </div>
+
+                <div class="form-group-full" style="margin-top: 10px;">
+                  <label for="verDocFile" style="font-size: 13px; font-weight: 700; color: #0A1E3F;">Student ID Card /
+                    Proof (PDF, JPG, PNG)</label>
+                  <input type="file" id="verDocFile" class="form-input" accept=".pdf,.jpg,.jpeg,.png,.webp" required
+                    style="padding: 6px 10px;">
+                  <small style="color: #334155; font-size: 11.5px; font-weight: 500;">Max 5MB. Stored securely and
+                    accessible only to university health center administrators.</small>
+                </div>
+
+                <button type="submit" id="btnSubmitVer" class="btn btn-primary btn-block"
+                  style="margin-top: 14px; padding: 10px; font-weight: 700;">
+                  Submit Verification Request
+                </button>
+              </form>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Edit Profile & Safety Boundary -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+
+            <!-- Edit Profile Form Card -->
+            <div class="card" style="padding: 24px;">
+              <h3 style="font-size: 17px; font-weight: 800; margin-bottom: 4px; color: #0A1E3F;">Edit Personal
+                Information</h3>
+              <p style="font-size: 13px; color: #1E293B; margin-bottom: 20px;">Update your name, department, donation
+                areas, and voluntary blood donation details.</p>
+
+              <form onsubmit="handleSaveProfile(event)">
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label for="editName">Full Name *</label>
+                    <input type="text" id="editName" class="form-input" placeholder="Your Full Name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="editStudentId">Student ID</label>
+                    <input type="text" id="editStudentId" class="form-input" placeholder="WUB-XXXX-XXXX" readonly
+                      style="background: #F1F5F9; cursor: not-allowed;">
+                  </div>
+                </div>
+
+                <div class="form-grid-2" style="margin-top: 12px;">
+                  <div class="form-group">
+                    <label for="editPhone">Contact Phone *</label>
+                    <input type="tel" id="editPhone" class="form-input" placeholder="017XXXXXXXX" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="editBlood">Blood Group *</label>
+                    <select id="editBlood" class="form-select" required>
+                      <option value="">Select Blood Group</option>
+                      <option value="A+">A+</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B-">B-</option>
+                      <option value="O+">O+</option>
+                      <option value="O-">O-</option>
+                      <option value="AB+">AB+</option>
+                      <option value="AB-">AB-</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-grid-2" style="margin-top: 12px;">
+                  <div class="form-group">
+                    <label for="editDept">Department *</label>
+                    <select id="editDept" class="form-select" required>
+                      <option value="CSE">Computer Science &amp; Engineering (CSE)</option>
+                      <option value="EEE">Electrical &amp; Electronic Engineering (EEE)</option>
+                      <option value="BBA">Business Administration (BBA)</option>
+                      <option value="ENG">English (ENG)</option>
+                      <option value="PHARM">Pharmacy</option>
+                      <option value="CIVIL">Civil Engineering</option>
+                      <option value="LAW">Law</option>
+                      <option value="MPH">Public Health</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="editLocation">Preferred Donation Area / Campus *</label>
+                    <select id="editLocation" class="form-select" required></select>
+                  </div>
+                </div>
+
+                <div class="form-group-full" style="margin-top: 12px;">
+                  <label for="editAvailability">Donor Availability Status</label>
+                  <select id="editAvailability" class="form-select">
+                    <option value="available">🟢 Available to Donate Blood</option>
+                    <option value="paused">⏸️ Temporarily Paused / Not Available</option>
+                  </select>
+                </div>
+
+                <div class="form-group-full" style="margin-top: 12px;">
+                  <label for="editBio">Short Bio / Note</label>
+                  <textarea id="editBio" class="form-textarea"
+                    placeholder="Tell fellow students about yourself, preferred hospitals or donation availability..."
+                    rows="3"></textarea>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; margin-top: 20px;">
+                  <button type="submit" class="btn btn-primary" style="padding: 9px 24px;">
+                    Save Profile Changes
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Anti-Scam & Safety Notice Card -->
+            <div class="card" style="padding: 20px; background: #FEF2F2; border: 1px solid #FECACA;">
+              <div style="display: flex; gap: 12px;">
+                <div style="color: #DC2626; flex-shrink: 0; margin-top: 2px;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 style="font-size: 14px; font-weight: 700; color: #991B1B; margin-bottom: 4px;">Voluntary Donation
+                    &amp; Anti-Scam Policy</h4>
+                  <p style="font-size: 12px; color: #7F1D1D; line-height: 1.5; margin: 0;">
+                    WUB BloodCare strictly prohibits any commercial transactions, cash payments, bKash/Nagad transfers,
+                    or blood selling.
+                    Violators will face immediate account suspension and referral to university disciplinary
+                    authorities.
+                    All blood compatibility checks and medical procedures must be conducted by certified healthcare
+                    professionals.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadProfileData();
+    });
+
+    async function loadProfileData() {
+      let user = getCurrentUser();
+      const token = localStorage.getItem('wub_token');
+
+      if (token) {
+        try {
+          const res = await fetch('/api/auth/me', {
+            headers: { 'Authorization': `Bearer ${token}` }
+          });
+          const data = await res.json();
+          if (data.success && data.user) {
+            user = data.user;
+            setCurrentUser(user);
+          }
+        } catch (err) {
+          console.warn('API me fetch error, using stored user', err);
+        }
+      }
+
+      if (!user) {
+        window.location.href = 'login.html?redirect=profile.html';
+        return;
+      }
+
+      // Populate Display Elements
+      document.getElementById('profileName').textContent = user.name || 'WUB Student';
+      document.getElementById('profileStudentId').textContent = `Student ID: ${user.student_id || user.id || 'WUB-Verified'}`;
+      document.getElementById('profileBlood').textContent = user.blood_group || user.blood || 'Not Set';
+      document.getElementById('profilePhone').textContent = user.phone || '017XXXXXXXX';
+      document.getElementById('profileDept').textContent = user.department || user.dept || 'WUB';
+      document.getElementById('profileLocation').textContent = user.location || user.address || 'Uttara';
+
+      const isAvail = user.donorAvailable !== false && user.availability !== 'paused' && user.availability !== 'unavailable';
+      const donorStatusText = user.is_donor || user.isDonor
+        ? (isAvail ? '🟢 Available to Donate' : '⏸️ Temporarily Paused')
+        : 'Not Registered as Donor';
+      document.getElementById('profileDonorStatus').textContent = donorStatusText;
+
+      const initials = (user.name || 'WUB').split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+      document.getElementById('profileInitials').textContent = initials;
+
+      if (user.avatar_url || user.avatarImg) {
+        document.getElementById('profileAvatarContainer').innerHTML = `<img src="${user.avatar_url || user.avatarImg}" style="width:100%;height:100%;object-fit:cover;">`;
+      }
+
+      // Verification Badge
+      const badgeWrap = document.getElementById('verificationBadgeWrap');
+      if (user.is_verified || user.verificationStatus === 'verified') {
+        badgeWrap.innerHTML = '<span class="badge" style="background:#DCFCE7;color:#15803D;font-weight:700;">✔ Verified WUB Student</span>';
+        document.getElementById('verificationUploadForm').style.display = 'none';
+        const alertBox = document.getElementById('verificationAlertBox');
+        alertBox.style.display = 'block';
+        alertBox.style.background = '#ECFDF5';
+        alertBox.style.color = '#065F46';
+        alertBox.innerHTML = '✔ <b>Your account is officially verified!</b> You have full access to blood requests and donor features.';
+      } else if (user.verification_status === 'pending' || user.verificationStatus === 'pending') {
+        badgeWrap.innerHTML = '<span class="badge" style="background:#FEF3C7;color:#B45309;font-weight:600;">⏳ Verification Under Review</span>';
+        document.getElementById('verificationUploadForm').style.display = 'none';
+        const alertBox = document.getElementById('verificationAlertBox');
+        alertBox.style.display = 'block';
+        alertBox.style.background = '#FFFBEB';
+        alertBox.style.color = '#92400E';
+        alertBox.innerHTML = '⏳ <b>Verification in progress:</b> Your student ID is currently under administrative review by the WUB Health Center.';
+      } else {
+        badgeWrap.innerHTML = '<span class="badge" style="background:#FEE2E2;color:#B91C1C;font-weight:600;">Unverified Student</span>';
+        const stdInput = document.getElementById('verStudentId');
+        if (stdInput) stdInput.value = user.student_id || user.id || '';
+      }
+
+      // Pre-fill edit form
+      const nameInput = document.getElementById('editName');
+      if (nameInput) nameInput.value = user.name || '';
+
+      const stdIdInput = document.getElementById('editStudentId');
+      if (stdIdInput) stdIdInput.value = user.student_id || user.id || '';
+
+      const phoneInput = document.getElementById('editPhone');
+      if (phoneInput) phoneInput.value = user.phone || '';
+
+      if (user.blood_group || user.blood) {
+        document.getElementById('editBlood').value = user.blood_group || user.blood;
+      }
+      if (user.department || user.dept) {
+        document.getElementById('editDept').value = user.department || user.dept;
+      }
+      if (user.bio) document.getElementById('editBio').value = user.bio;
+
+      const availSelect = document.getElementById('editAvailability');
+      if (availSelect) {
+        availSelect.value = isAvail ? 'available' : 'paused';
+      }
+
+      // Locations
+      const locSelect = document.getElementById('editLocation');
+      if (typeof DHAKA_LOCATIONS !== 'undefined') {
+        locSelect.innerHTML = DHAKA_LOCATIONS.map(l => `<option value="${l}" ${(l === user.location || l === user.address) ? 'selected' : ''}>${l}</option>`).join('');
+      }
+    }
+
+    async function handleSaveProfile(e) {
+      e.preventDefault();
+      const token = localStorage.getItem('wub_token');
+      const name = document.getElementById('editName')?.value.trim();
+      const phone = document.getElementById('editPhone')?.value.trim();
+      const blood_group = document.getElementById('editBlood')?.value;
+      const department = document.getElementById('editDept')?.value;
+      const location = document.getElementById('editLocation')?.value;
+      const availability = document.getElementById('editAvailability')?.value;
+      const bio = document.getElementById('editBio')?.value.trim();
+
+      if (!isValidBDPhone(phone)) {
+        showToast('Please enter a valid 11-digit Bangladeshi mobile number.', 'danger');
+        return;
+      }
+
+      // Try server update
+      let apiSuccess = false;
+      if (token) {
+        try {
+          const res = await fetch('/api/users/profile', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              name,
+              phone,
+              blood_group,
+              department,
+              location,
+              availability,
+              is_available: availability === 'available',
+              bio
+            })
+          });
+          const data = await res.json();
+          if (data.success) {
+            apiSuccess = true;
+          }
+        } catch (err) {
+          console.warn('API profile save error, using local save', err);
+        }
+      }
+
+      // Always update client-side session and local storage
+      const user = getCurrentUser() || {};
+      user.name = name || user.name;
+      user.phone = phone || user.phone;
+      user.blood = blood_group || user.blood;
+      user.blood_group = blood_group || user.blood_group;
+      user.dept = department || user.dept;
+      user.department = department || user.department;
+      user.location = location || user.location;
+      user.address = location || user.address;
+      user.availability = availability;
+      user.donorAvailable = availability === 'available';
+      user.bio = bio;
+      setCurrentUser(user);
+
+      // Also update in users list and donors list
+      const users = getStoredUsers();
+      const uIndex = users.findIndex(u => u.id === user.id || u.student_id === user.student_id);
+      if (uIndex !== -1) {
+        Object.assign(users[uIndex], user);
+        saveUsers(users);
+      }
+
+      const donors = getStoredDonors();
+      const dIndex = donors.findIndex(d => d.id === user.id || d.userId === user.id || d.phone === user.phone);
+      if (dIndex !== -1) {
+        donors[dIndex].name = user.name;
+        donors[dIndex].phone = user.phone;
+        donors[dIndex].blood = user.blood;
+        donors[dIndex].dept = user.dept;
+        donors[dIndex].location = user.location;
+        donors[dIndex].campus = user.location;
+        donors[dIndex].available = user.donorAvailable;
+        saveDonors(donors);
+      }
+
+      showToast('Profile updated successfully!', 'success');
+      loadProfileData();
+    }
+
+    async function handleAvatarUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = async function (evt) {
+        const base64Img = evt.target.result;
+
+        // Try server upload
+        const token = localStorage.getItem('wub_token');
+        if (token) {
+          const formData = new FormData();
+          formData.append('avatar', file);
+          try {
+            await fetch('/api/users/avatar', {
+              method: 'POST',
+              headers: { 'Authorization': `Bearer ${token}` },
+              body: formData
+            });
+          } catch (err) { }
+        }
+
+        // Save to user object
+        const user = getCurrentUser() || {};
+        user.avatar_url = base64Img;
+        user.avatarImg = base64Img;
+        setCurrentUser(user);
+
+        // Update in stored users
+        const users = getStoredUsers();
+        const u = users.find(u => u.id === user.id);
+        if (u) {
+          u.avatar_url = base64Img;
+          u.avatarImg = base64Img;
+          saveUsers(users);
+        }
+
+        document.getElementById('profileAvatarContainer').innerHTML = `<img src="${base64Img}" style="width:100%;height:100%;object-fit:cover;">`;
+        showToast('Profile photo updated!', 'success');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    async function submitStudentVerification(e) {
+      e.preventDefault();
+      const token = localStorage.getItem('wub_token');
+      const student_id = document.getElementById('verStudentId')?.value || '';
+      const docFile = document.getElementById('verDocFile')?.files[0];
+
+      if (!docFile) {
+        showToast('Please select your Student ID card document to upload.', 'danger');
+        return;
+      }
+
+      const btn = document.getElementById('btnSubmitVer');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Uploading document...';
+      }
+
+      let apiSuccess = false;
+      if (token) {
+        try {
+          const formData = new FormData();
+          formData.append('student_id', student_id);
+          formData.append('id_card_document', docFile);
+
+          const res = await fetch('/api/users/verification', {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` },
+            body: formData
+          });
+          const data = await res.json();
+          if (data && data.success) {
+            apiSuccess = true;
+          }
+        } catch (err) {
+          console.warn('API verification submission error, using local fallback', err);
+        }
+      }
+
+      // Always update client-side session and local store
+      const user = getCurrentUser() || {};
+      user.verification_status = 'pending';
+      user.verificationStatus = 'pending';
+      if (student_id) user.student_id = student_id;
+      setCurrentUser(user);
+
+      const users = getStoredUsers();
+      const u = users.find(x => x.id === user.id || x.student_id === user.student_id);
+      if (u) {
+        u.verification_status = 'pending';
+        u.verificationStatus = 'pending';
+        if (student_id) u.student_id = student_id;
+        saveUsers(users);
+      }
+
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Submit Verification Request';
+      }
+
+      showToast('Student ID document uploaded! Verification is under review.', 'success');
+      loadProfileData();
+    }
+  </script>
+</body>
+
+</html>

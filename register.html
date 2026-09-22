@@ -1,49 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register · WUB Blood</title>
-  <meta name="description" content="Create a verified student account on World University of Bangladesh WUB Blood platform.">
+  <title>Register · WUB BloodCare</title>
+  <meta name="description" content="Create a verified student account on WUB BloodCare platform.">
   <link rel="icon" type="image/png" href="assets/WUB-Logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
-<body style="background: #F8FAFC;">
-  
+
+<body>
+
   <div class="auth-page-wrapper">
-    
+
     <div class="auth-split-card">
-      
+
       <!-- LEFT VISUAL BRAND SIDE -->
       <div class="auth-visual-side">
         <div class="auth-visual-brand">
-          <div class="auth-logo-badge">
-            <img src="assets/WUB-Logo.png" alt="WUB Blood Logo" class="auth-logo-img">
-            <span class="blood-drop-badge" title="WUB Blood">
-              <svg viewBox="0 0 32 38" fill="none">
-                <path d="M16 2C16 2 2 16.5 2 24C2 31.732 8.268 38 16 38C23.732 38 30 31.732 30 24C30 16.5 16 2 16 2Z" fill="#EF4444"/>
-                <circle cx="16" cy="23" r="4" fill="#FFFFFF" fill-opacity="0.95"/>
-              </svg>
-            </span>
+          <div style="margin-bottom: 8px;">
+            <img src="assets/WUB-Logo.png" alt="World University of Bangladesh Logo"
+              style="width: 64px; height: 64px; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35));">
           </div>
-          <h2>WUB BLOOD</h2>
-          <span>Student Blood Donation Platform</span>
+          <h2>WUB BloodCare</h2>
+          <span>Students Helping Students.</span>
         </div>
 
         <div class="auth-campus-preview">
-          <img src="assets/campus-bg.png" alt="WUB Campus">
+          <img src="assets/campus-bg.png" alt="WUB Campus Building">
         </div>
 
         <div class="auth-visual-footer">
           <b>World University of Bangladesh</b>
-          <small>Together We Learn, Together We Grow</small>
+          <div class="uni-motto-cursive" style="font-size: 13px;">Together We Learn, Together We Grow</div>
         </div>
       </div>
 
       <!-- RIGHT REGISTRATION FORM SIDE -->
       <div class="auth-form-side">
+        <a href="index.html" class="mobile-auth-brand">
+          <img src="assets/WUB-Logo.png" alt="WUB Logo">
+          <span>WUB BloodCare</span>
+        </a>
         <h2>Create Account</h2>
-        <p>Join the verified WUB Blood student network.</p>
+        <p>Join the verified WUB BloodCare student network.</p>
 
         <form onsubmit="registerAccount(event)">
           <div class="form-group-full">
@@ -81,7 +82,8 @@
             <label for="regDept">Department *</label>
             <select id="regDept" class="form-select" required>
               <option value="Computer Science &amp; Engineering (CSE)">Computer Science &amp; Engineering (CSE)</option>
-              <option value="Electrical &amp; Electronic Engineering (EEE)">Electrical &amp; Electronic Engineering (EEE)</option>
+              <option value="Electrical &amp; Electronic Engineering (EEE)">Electrical &amp; Electronic Engineering
+                (EEE)</option>
               <option value="Business Administration (BBA)">Business Administration (BBA)</option>
               <option value="English (ENG)">English (ENG)</option>
               <option value="Pharmacy">Pharmacy</option>
@@ -98,25 +100,27 @@
             </div>
             <div class="form-group">
               <label for="regAddress">Dhaka Area *</label>
-              <select id="regAddress" class="form-select" required>
-                <option value="Uttara">Uttara</option>
-                <option value="Mirpur">Mirpur</option>
-                <option value="Pallabi">Pallabi</option>
-                <option value="Mohakhali">Mohakhali</option>
-                <option value="Dhanmondi">Dhanmondi</option>
-                <option value="Mohammadpur">Mohammadpur</option>
-                <option value="Gulshan">Gulshan</option>
-                <option value="Banani">Banani</option>
-                <option value="Farmgate">Farmgate</option>
-                <option value="Motijheel">Motijheel</option>
-                <option value="Badda">Badda</option>
-                <option value="Rampura">Rampura</option>
-                <option value="Tejgaon">Tejgaon</option>
+              <select id="regAddress" class="form-select" required data-populate="locations">
+                <option value="">Select location / area</option>
                 <option value="Agargaon">Agargaon</option>
-                <option value="Kafrul">Kafrul</option>
-                <option value="Khilkhet">Khilkhet</option>
+                <option value="Badda">Badda</option>
+                <option value="Banani">Banani</option>
                 <option value="Bashundhara">Bashundhara</option>
-                <option value="WUB Permanent Campus">WUB Permanent Campus</option>
+                <option value="Dhanmondi">Dhanmondi</option>
+                <option value="Farmgate">Farmgate</option>
+                <option value="Gulshan">Gulshan</option>
+                <option value="Jatrabari">Jatrabari</option>
+                <option value="Khilkhet">Khilkhet</option>
+                <option value="Mirpur">Mirpur</option>
+                <option value="Mohakhali">Mohakhali</option>
+                <option value="Mohammadpur">Mohammadpur</option>
+                <option value="Motijheel">Motijheel</option>
+                <option value="Old Dhaka (Puran Dhaka)">Old Dhaka (Puran Dhaka)</option>
+                <option value="Rampura">Rampura</option>
+                <option value="Shahbagh / DMCH">Shahbagh / DMCH</option>
+                <option value="Tejgaon">Tejgaon</option>
+                <option value="Uttara">Uttara</option>
+                <option value="WUB Permanent Campus (Uttara)">WUB Permanent Campus (Uttara)</option>
               </select>
             </div>
           </div>
@@ -124,15 +128,25 @@
           <div class="form-group-full">
             <label for="regPassword">Password *</label>
             <div class="password-input-wrap">
-              <input type="password" id="regPassword" class="form-input" placeholder="Create secure password (min 6 chars)" required style="padding-right: 36px;">
-              <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('regPassword')" aria-label="Toggle password visibility">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              <input type="password" id="regPassword" class="form-input"
+                placeholder="Create secure password (min 6 chars)" required style="padding-right: 36px;">
+              <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('regPassword')"
+                aria-label="Toggle password visibility">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
               </button>
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block" style="padding: 10px 20px; font-size: 13.5px; margin-top: 8px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+          <button type="submit" class="btn btn-primary btn-block"
+            style="padding: 10px 20px; font-size: 13.5px; margin-top: 8px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <polyline points="16 11 18 13 22 9" />
+            </svg>
             Create Account
           </button>
 
@@ -142,7 +156,8 @@
           </div>
 
           <div style="text-align: center; margin-top: 12px;">
-            <a href="index.html" style="font-size: 11.5px; color: var(--primary); display: inline-flex; align-items: center; gap: 4px;">
+            <a href="index.html"
+              style="font-size: 11.5px; color: var(--primary); display: inline-flex; align-items: center; gap: 4px;">
               ← Back to Home
             </a>
           </div>
@@ -155,4 +170,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

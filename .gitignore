@@ -1,3 +1,13 @@
+# Dependencies
+node_modules/
+
+# Environment and secrets
+.env
+.env.local
+
+# Uploads and temporary data
+uploads/
+
 # OS files
 Thumbs.db
 Desktop.ini
@@ -11,3 +21,4 @@ test_results.txt
 page_*.txt
 dash_out.txt
 admin_out.txt
+

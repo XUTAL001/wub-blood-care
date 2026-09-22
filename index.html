@@ -1,57 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WUB Blood — Student Blood Donation Platform</title>
-  <meta name="description" content="Dedicated blood donor network for World University of Bangladesh students. Find blood, request blood, or become a donor within the campus community.">
+  <title>WUB BloodCare — Students Helping Students.</title>
+  <meta name="description"
+    content="Find blood donors, request blood, or become a donor — all within the WUB community. World University of Bangladesh Student Blood Network.">
   <link rel="icon" type="image/png" href="assets/WUB-Logo.png">
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=3.5">
 </head>
+
 <body>
   <div class="app-container">
 
     <!-- Mobile Navigation Drawer Overlay -->
     <div class="sidebar-overlay" id="sideOverlay" onclick="closeSide()"></div>
 
-    <!-- SIDEBAR — WUB DOX / WUB BLOOD -->
+    <!-- SIDEBAR — WUB BLOODCARE -->
     <aside class="sidebar" id="side">
-      <div>
-        <a href="index.html" class="sidebar-brand">
-          <div class="brand-icon">
-            <img src="assets/WUB-Logo.png" alt="WUB Blood Logo" class="brand-logo-img">
-            <span class="blood-drop-badge" title="WUB Blood">
-              <svg viewBox="0 0 32 38" fill="none">
-                <path d="M16 2C16 2 2 16.5 2 24C2 31.732 8.268 38 16 38C23.732 38 30 31.732 30 24C30 16.5 16 2 16 2Z" fill="#EF4444"/>
-                <circle cx="16" cy="23" r="4" fill="#FFFFFF" fill-opacity="0.95"/>
-              </svg>
-            </span>
-          </div>
-          <div class="brand-text">
-            <h2>WUB BLOOD</h2>
-            <span>Campus Blood Network</span>
-          </div>
-        </a>
+      <div class="sidebar-top-section">
+        <div class="sidebar-header-row">
+          <a href="index.html" class="sidebar-brand">
+            <div class="brand-icon">
+              <img src="assets/WUB-Logo.png" alt="WUB Logo" class="brand-logo-img">
+            </div>
+            <div class="brand-text">
+              <h2>WUB BloodCare</h2>
+              <span>Students Helping Students.</span>
+            </div>
+          </a>
+          <button class="sidebar-close-btn" onclick="closeSide()" aria-label="Close navigation menu">✕</button>
+        </div>
 
         <nav class="sidebar-nav">
           <a class="nav-link active" href="index.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
             <span>Home</span>
           </a>
           <a class="nav-link" href="find-blood.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+              <circle cx="12" cy="13.5" r="2.2" />
+            </svg>
             <span>Find Blood</span>
           </a>
           <a class="nav-link" href="request-blood.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+              <path d="M9 12h6" />
+              <path d="M9 16h6" />
+            </svg>
             <span>Request Blood</span>
           </a>
           <a class="nav-link" href="become-donor.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
             <span>Become Donor</span>
           </a>
           <a class="nav-link" href="about.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
             <span>About</span>
           </a>
         </nav>
@@ -62,14 +87,10 @@
           <div class="crest-badge">
             <img src="assets/WUB-Logo.png" alt="World University of Bangladesh Crest" class="crest-img">
           </div>
-          <div class="crest-text">
-            World University<br>of Bangladesh
-          </div>
+          <div class="crest-text">World University<br>of Bangladesh</div>
         </div>
-        <div class="uni-motto">
-          Together We Learn<br>Together We Grow
-        </div>
-        <div class="sidebar-art" title="World University of Bangladesh Permanent Campus"></div>
+        <div class="uni-motto-cursive">Together We Learn<br>Together We Grow</div>
+        <div class="sidebar-art"></div>
       </div>
     </aside>
 
@@ -77,161 +98,187 @@
     <div class="main-wrapper">
 
       <!-- TOPBAR -->
-      <header class="topbar home-topbar">
-        <div class="topbar-left" style="flex: 1; max-width: 600px;">
+      <header class="topbar glass-topbar">
+        <div class="topbar-left">
           <button class="mobile-menu-btn" onclick="toggleSide()" aria-label="Open Navigation">☰</button>
-          
-          <div class="search-container home-search-container">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#64748B" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <input type="text" id="globalSearchInput" class="search-input" placeholder="Search donors by blood group, Dhaka area, name...">
+          <a href="index.html" class="mobile-topbar-brand">
+            <img src="assets/WUB-Logo.png" alt="WUB" class="mobile-logo-img">
+            <span class="mobile-brand-title">WUB BloodCare</span>
+          </a>
+
+          <div class="topbar-search-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <input type="text" id="globalSearchInput" placeholder="Search donors by name, blood group, or location..."
+              onkeydown="if(event.key==='Enter'){window.location.href='find-blood.html?search='+encodeURIComponent(this.value)}">
           </div>
         </div>
-        <div class="topbar-right">
-          <button class="top-action-btn" onclick="toggleNotifications()" aria-label="Notifications">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-            <span class="notification-badge"></span>
-          </button>
-          <div class="user-profile-menu" id="topbarUserMenuWrap"></div>
+
+        <div class="topbar-right-v2">
+          <div class="glass-merged-pill">
+            <button class="merged-notif-btn" onclick="toggleNotifications(event)" aria-label="Notifications"
+              title="Notifications">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+              </svg>
+              <span class="notif-dot-red"></span>
+            </button>
+            <div class="merged-pill-divider"></div>
+            <div class="user-profile-menu merged-profile-wrap" id="topbarUserMenuWrap"></div>
+          </div>
         </div>
       </header>
 
-      <!-- PAGE CONTENT (EXACT MATCH FOR MOCKUP SCREEN) -->
+      <!-- NOTIFICATIONS MODAL / PANEL -->
+      <div class="notifications-panel" id="notificationsPanel">
+        <div class="notif-header">
+          <h3>Blood Alerts &amp; Updates</h3>
+          <button class="close-btn" onclick="toggleNotifications()">✕</button>
+        </div>
+        <div class="notif-body" id="notifList">
+          <div class="notif-item unread">
+            <span class="notif-dot"></span>
+            <div>
+              <p><strong>Emergency: O+ Blood Needed</strong> at Uttara Ahsania Mission Hospital.</p>
+              <small>15 mins ago</small>
+            </div>
+          </div>
+          <div class="notif-item">
+            <div>
+              <p>Welcome to <strong>WUB BloodCare</strong>! Connect and donate to help fellow students.</p>
+              <small>1 hour ago</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN HOMEPAGE CONTENT (EXACT 1:1 MATCH OF MOCKUP) -->
       <main class="page-body home-page-body">
-        
+
+        <!-- SECTION 1: HERO SHOWCASE CARD -->
         <section class="hero-showcase-card">
-          
-          <!-- TOP SPLIT: CONTENT LEFT + CAMPUS PHOTO RIGHT -->
+
+          <!-- TOP HERO SPLIT -->
           <div class="hero-split-top">
-            
-            <!-- LEFT CONTENT -->
+
+            <!-- LEFT HERO TEXT CONTENT -->
             <div class="hero-left-content">
-              
-              <!-- Brand Droplet Tag -->
-              <div class="hero-brand-header">
-                <div class="bloodconnect-drop-icon">
-                  <svg viewBox="0 0 28 34" fill="none">
-                    <path d="M14 1C14 1 1 14 1 21C1 28.1797 6.8203 34 14 34C21.1797 34 27 28.1797 27 21C27 14 14 1 14 1Z" fill="#E11D48"/>
-                    <path d="M14 24.5C14 24.5 9.5 21.5 9.5 18.5C9.5 16.8 10.8 15.5 12.5 15.5C13.4 15.5 14 16 14 16C14 16 14.6 15.5 15.5 15.5C17.2 15.5 18.5 16.8 18.5 18.5C18.5 21.5 14 24.5 14 24.5Z" fill="#FFFFFF"/>
+
+              <!-- Pill Badge -->
+              <div class="hero-pill-tag">
+                <span class="hero-pill-drop-icon">
+                  <svg width="12" height="14" viewBox="0 0 24 28" fill="#1D4ED8">
+                    <path d="M12 1C12 1 2 12 2 18C2 23.523 6.477 28 12 28C17.523 28 22 23.523 22 18C22 12 12 1 12 1Z" />
                   </svg>
-                </div>
-                <div class="hero-brand-titles">
-                  <h2>BloodConnect</h2>
-                  <span>WUB Blood Donation Platform</span>
-                </div>
+                </span>
+                <span class="hero-pill-text">WUB Only &bull; Verified Students</span>
               </div>
 
-              <!-- Main Headline -->
-              <h1 class="hero-headline">
-                Same Campus.<br>
-                Same Community.<br>
-                <span>Save Lives.</span>
+              <!-- Main Hero Headline: WUB BloodCare -->
+              <h1 class="hero-title-main">
+                WUB Blood<span class="text-accent-red">Care</span>
               </h1>
 
-              <!-- Paragraph Description -->
-              <p class="hero-subtitle">
-                Find blood donors, request blood, or become a donor —<br>
-                all within the WUB community.
+              <!-- Subtitle: Students Helping Students. -->
+              <h2 class="hero-subtitle-tag">Students Helping Students.</h2>
+
+              <!-- Hero Paragraph -->
+              <p class="hero-description-lead">
+                Find blood donors, request blood, or become a donor &mdash;<br>
+                all within the WUB community. Together we can save lives.
               </p>
 
-              <!-- Two Action Buttons -->
-              <div class="hero-btn-row">
-                <a href="find-blood.html" class="btn-hero-primary">
+              <!-- Action Buttons -->
+              <div class="hero-action-buttons">
+                <a href="find-blood.html" class="btn-hero-red" id="heroFindDonorBtn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
                   </svg>
-                  Find Blood
+                  <span>Find Blood Donor</span>
                 </a>
-                <a href="request-blood.html" class="btn-hero-outline">
+                <a href="request-blood.html" class="btn-hero-white-outline" id="heroRequestBloodBtn">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
-                    <path d="M12 13v4"/>
-                    <path d="M10 15h4"/>
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                    <path d="M12 13v4" />
+                    <path d="M10 15h4" />
                   </svg>
-                  Request Blood
+                  <span>Request Blood</span>
                 </a>
               </div>
             </div>
 
-            <!-- RIGHT CAMPUS VISUAL -->
-            <div class="hero-right-visual">
-              <img src="assets/campus-bg.png" alt="World University of Bangladesh Campus" class="campus-photo">
-              
-              <!-- Curved Convex Arch Mask with glowing boundary -->
-              <svg class="campus-curve-mask" viewBox="0 0 140 500" preserveAspectRatio="none">
-                <defs>
-                  <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="5" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                  </filter>
-                </defs>
-                <path d="M 0,0 L 25,0 C 135,170 135,330 25,500 L 0,500 Z" fill="#FFFFFF"/>
-                <path d="M 25,0 C 135,170 135,330 25,500" fill="none" stroke="rgba(255, 255, 255, 0.95)" stroke-width="6" filter="url(#softGlow)"/>
-                <path d="M 25,0 C 135,170 135,330 25,500" fill="none" stroke="rgba(255, 255, 255, 1)" stroke-width="2.5"/>
-              </svg>
 
-              <!-- Cursive handwriting on campus grass -->
-              <div class="campus-script-box">
-                <div class="script-head">World University<br>of Bangladesh</div>
-                <div class="script-sub">Together We Learn<br>Together We Grow</div>
-              </div>
+            <!-- RIGHT HERO VISUAL (CAMPUS BG PHOTO ONLY) -->
+            <div class="hero-right-visual">
+              <img src="assets/campus-bg.png" alt="World University of Bangladesh Campus" class="campus-main-photo">
+              <!-- Left edge gentle blend overlay -->
+              <div class="campus-left-blend"></div>
             </div>
 
           </div>
 
-          <!-- BOTTOM 4 FEATURE TRUST ROW -->
-          <div class="hero-trust-row">
-            
-            <div class="trust-cell">
-              <div class="trust-cell-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#082042" stroke-width="2.2">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          <!-- BOTTOM 4 FEATURE TRUST ROW (INSIDE HERO CARD) -->
+          <div class="hero-trust-row-grid">
+
+            <!-- Feature 1 -->
+            <div class="trust-stat-cell">
+              <div class="trust-stat-icon bg-circle-shield">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E3A8A" stroke-width="2.2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="m9 12 2 2 4-4" />
                 </svg>
               </div>
-              <div class="trust-cell-info">
+              <div class="trust-stat-text">
                 <h4>WUB Only</h4>
                 <p>Verified Students</p>
               </div>
             </div>
 
-            <div class="trust-cell">
-              <div class="trust-cell-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#082042" stroke-width="2.2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  <path d="m9 12 2 2 4-4"/>
+            <!-- Feature 2 -->
+            <div class="trust-stat-cell">
+              <div class="trust-stat-icon bg-circle-safe">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E3A8A" stroke-width="2.2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
               </div>
-              <div class="trust-cell-info">
+              <div class="trust-stat-text">
                 <h4>Safe &amp; Secure</h4>
                 <p>Verification System</p>
               </div>
             </div>
 
-            <div class="trust-cell">
-              <div class="trust-cell-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#082042" stroke-width="2.2">
-                  <circle cx="12" cy="12" r="10"/>
-                  <polyline points="12 6 12 12 16 14"/>
+            <!-- Feature 3 -->
+            <div class="trust-stat-cell">
+              <div class="trust-stat-icon bg-circle-clock">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E3A8A" stroke-width="2.2">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
                 </svg>
               </div>
-              <div class="trust-cell-info">
+              <div class="trust-stat-text">
                 <h4>24/7</h4>
                 <p>Emergency Support</p>
               </div>
             </div>
 
-            <div class="trust-cell">
-              <div class="trust-cell-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#082042" stroke-width="2.2">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            <!-- Feature 4 -->
+            <div class="trust-stat-cell">
+              <div class="trust-stat-icon bg-circle-heart">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E3A8A" stroke-width="2.2">
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
               </div>
-              <div class="trust-cell-info">
+              <div class="trust-stat-text">
                 <h4>Stronger</h4>
                 <p>WUB Community</p>
               </div>
@@ -241,11 +288,183 @@
 
         </section>
 
+        <!-- SECTION 2: MIDDLE 3-COLUMN SECTION (WHY CHOOSE + 2X2 STATS + BE A DONOR) -->
+        <section class="home-middle-grid">
+
+          <!-- LEFT COLUMN: WHY CHOOSE WUB BLOODCARE? -->
+          <div class="why-choose-column">
+            <div class="section-tag-row">
+              <span class="tag-red-line"></span>
+              <span class="tag-label-caption">Your Support Matters</span>
+            </div>
+            <h2 class="why-choose-heading">
+              Why Choose<br>WUB Blood<span class="text-accent-red">Care</span>?
+            </h2>
+            <p class="why-choose-paragraph">
+              We're more than just a platform. We're a community of WUB students helping each other in times of need.
+            </p>
+            <a href="about.html" class="btn-learn-more-navy">
+              <span>Learn More</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- MIDDLE COLUMN: 2X2 STATS GRID -->
+          <div class="stats-2x2-grid">
+
+            <!-- Stat 1: Registered Donors -->
+            <div class="stat-card-tile">
+              <div class="stat-icon-wrapper bg-icon-red">
+                <svg width="18" height="20" viewBox="0 0 24 28" fill="#EF4444">
+                  <path d="M12 1C12 1 2 12 2 18C2 23.523 6.477 28 12 28C17.523 28 22 23.523 22 18C22 12 12 1 12 1Z" />
+                </svg>
+              </div>
+              <div class="stat-card-details">
+                <div class="stat-digit-val">500+</div>
+                <div class="stat-card-name">Registered Donors</div>
+                <div class="stat-card-desc">Active WUB students</div>
+              </div>
+            </div>
+
+            <!-- Stat 2: Blood Requests -->
+            <div class="stat-card-tile">
+              <div class="stat-icon-wrapper bg-icon-blue">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#2563EB">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <circle cx="12" cy="11" r="3" fill="#FFFFFF" />
+                </svg>
+              </div>
+              <div class="stat-card-details">
+                <div class="stat-digit-val">120+</div>
+                <div class="stat-card-name">Blood Requests</div>
+                <div class="stat-card-desc">Completed successfully</div>
+              </div>
+            </div>
+
+            <!-- Stat 3: Success Rate -->
+            <div class="stat-card-tile">
+              <div class="stat-icon-wrapper bg-icon-green">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#10B981">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <div class="stat-card-details">
+                <div class="stat-digit-val">95%</div>
+                <div class="stat-card-name">Success Rate</div>
+                <div class="stat-card-desc">Donor match rate</div>
+              </div>
+            </div>
+
+            <!-- Stat 4: Emergency Support -->
+            <div class="stat-card-tile">
+              <div class="stat-icon-wrapper bg-icon-purple">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#8B5CF6">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" />
+                </svg>
+              </div>
+              <div class="stat-card-details">
+                <div class="stat-digit-val">24/7</div>
+                <div class="stat-card-name">Emergency Support</div>
+                <div class="stat-card-desc">Always here for you</div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- SECTION 3: HOW IT WORKS (SIMPLE STEPS, BIG IMPACT) -->
+        <section class="how-it-works-block">
+          <div class="how-it-works-head">
+            <div class="section-tag-row">
+              <span class="tag-red-line"></span>
+              <span class="tag-label-caption">How It Works</span>
+            </div>
+            <h2 class="how-it-works-title">Simple Steps, Big Impact</h2>
+          </div>
+
+          <div class="steps-flow-row">
+
+            <!-- Step 1 -->
+            <div class="step-flow-item">
+              <div class="step-circle-badge">1</div>
+              <div class="step-title-text">Find / Request<br>Blood</div>
+            </div>
+
+            <!-- Connector 1 -->
+            <div class="step-arrow-divider">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2.2">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-flow-item">
+              <div class="step-circle-badge">2</div>
+              <div class="step-title-text">Get Matched<br>with Donor</div>
+            </div>
+
+            <!-- Connector 2 -->
+            <div class="step-arrow-divider">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2.2">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-flow-item">
+              <div class="step-circle-badge">3</div>
+              <div class="step-title-text">Contact &amp; Confirm<br>Details</div>
+            </div>
+
+            <!-- Connector 3 -->
+            <div class="step-arrow-divider">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2.2">
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-flow-item">
+              <div class="step-circle-badge">4</div>
+              <div class="step-title-text">Save a Life</div>
+            </div>
+
+          </div>
+        </section>
+
       </main>
+
+      <!-- BOTTOM DECORATIVE FLOWING SVG WAVES -->
+      <div class="page-bottom-wave-layer" aria-hidden="true">
+        <svg viewBox="0 0 1440 160" fill="none" preserveAspectRatio="none">
+          <path d="M0,80 C320,140 520,30 820,80 C1120,130 1320,50 1440,70 L1440,160 L0,160 Z"
+            fill="rgba(224, 238, 255, 0.45)" />
+          <path d="M0,110 C380,50 680,140 1000,90 C1240,60 1380,110 1440,100 L1440,160 L0,160 Z"
+            fill="rgba(205, 228, 255, 0.55)" />
+        </svg>
+      </div>
+
+      <footer class="app-footer">
+        <div><b>WUB BloodCare</b> · World University of Bangladesh · <span class="uni-motto-cursive"
+            style="font-size: 13px; color: var(--primary);">Together We Learn, Together We Grow</span></div>
+        <div>Students Helping Students. · Non-commercial University Welfare Platform</div>
+      </footer>
 
     </div>
   </div>
 
   <script src="script.js"></script>
 </body>
+
 </html>
