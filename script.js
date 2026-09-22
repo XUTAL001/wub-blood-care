@@ -798,6 +798,18 @@ function updateThemeUIElements(theme) {
   if (guestText) guestText.textContent = isDark ? "Light Mode" : "Dark Mode";
 }
 
+function getAuthFloatingControlsContainer() {
+  if (!document.querySelector(".auth-page-wrapper")) return null;
+  let container = document.getElementById("authFloatingControls");
+  if (!container) {
+    container = document.createElement("div");
+    container.id = "authFloatingControls";
+    container.className = "auth-floating-controls";
+    document.body.appendChild(container);
+  }
+  return container;
+}
+
 function renderThemeToggleButtons() {
   const isDark = document.documentElement.getAttribute("data-theme") === "dark";
 
@@ -820,21 +832,19 @@ function renderThemeToggleButtons() {
   });
 
   // 2. If on standalone auth page (login/register) without topbar, provide floating corner toggle
-  if (document.querySelector(".auth-page-wrapper") && !document.querySelector(".theme-toggle-btn")) {
+  const authContainer = getAuthFloatingControlsContainer();
+  if (authContainer && !authContainer.querySelector(".theme-toggle-btn")) {
     const floatBtn = document.createElement("button");
     floatBtn.className = "theme-toggle-btn auth-theme-toggle";
     floatBtn.id = "themeToggleBtn";
     floatBtn.onclick = toggleTheme;
-    floatBtn.style.position = "fixed";
-    floatBtn.style.top = "18px";
-    floatBtn.style.right = "18px";
-    floatBtn.style.zIndex = "999";
     floatBtn.title = isDark ? "Switch to Light Mode" : "Switch to Dark Mode";
+    floatBtn.setAttribute("aria-label", "Toggle Theme");
     floatBtn.innerHTML = `
       <span class="theme-toggle-icon" id="themeToggleIcon">${isDark ? '☀️' : '🌙'}</span>
       <span class="theme-toggle-label">${isDark ? 'Light' : 'Dark'}</span>
     `;
-    document.body.appendChild(floatBtn);
+    authContainer.appendChild(floatBtn);
   }
 
   updateThemeUIElements(isDark ? "dark" : "light");
@@ -1585,16 +1595,14 @@ function renderLanguageToggleButtons() {
   document.querySelectorAll(".sidebar-lang-switch").forEach(el => el.remove());
 
   // 3. Floating on auth pages
-  if (document.querySelector(".auth-page-wrapper") && !document.querySelector(".lang-toggle-btn")) {
+  const authContainer = getAuthFloatingControlsContainer();
+  if (authContainer && !authContainer.querySelector(".lang-toggle-btn")) {
     const floatBtn = document.createElement("button");
     floatBtn.className = "lang-toggle-btn auth-lang-toggle";
     floatBtn.id = "langToggleBtn";
     floatBtn.onclick = toggleLanguage;
-    floatBtn.style.position = "fixed";
-    floatBtn.style.top = "18px";
-    floatBtn.style.right = "92px";
-    floatBtn.style.zIndex = "999";
     floatBtn.title = "Change Language / ভাষা পরিবর্তন করুন";
+    floatBtn.setAttribute("aria-label", "Toggle Language");
     floatBtn.innerHTML = `
       <span class="lang-globe-icon">🌐</span>
       <span class="lang-toggle-pill">
@@ -1603,7 +1611,11 @@ function renderLanguageToggleButtons() {
         <span class="lang-opt bn ${currentLang === 'bn' ? 'active' : ''}">বাং</span>
       </span>
     `;
-    document.body.appendChild(floatBtn);
+    if (authContainer.firstChild) {
+      authContainer.insertBefore(floatBtn, authContainer.firstChild);
+    } else {
+      authContainer.appendChild(floatBtn);
+    }
   }
 
   updateLanguageUIElements(currentLang);

@@ -7574,3 +7574,36 @@ input:checked+.slider-switch:before {
     display: inline;
   }
 }
+
+/* Floating controls container for standalone auth pages (Login / Register / Forgot Password) */
+.auth-floating-controls {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.auth-floating-controls .theme-toggle-btn,
+.auth-floating-controls .lang-toggle-btn {
+  position: static !important;
+  top: auto !important;
+  right: auto !important;
+  margin: 0 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.7) !important;
+}
+
+[data-theme="dark"] .auth-floating-controls .theme-toggle-btn,
+[data-theme="dark"] .auth-floating-controls .lang-toggle-btn {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+@media (max-width: 640px) {
+  .auth-floating-controls {
+    top: 14px;
+    right: 14px;
+    gap: 8px;
+  }
+}
