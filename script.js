@@ -1670,7 +1670,6 @@ function updateTopbarAuthUI() {
         </div>
         <a href="login.html" class="dropdown-item">🔑 ${isBn ? 'লগইন / সাইন ইন' : 'Login / Sign In'}</a>
         <a href="register.html" class="dropdown-item">📝 ${isBn ? 'শিক্ষার্থী নিবন্ধন' : 'Register as Student'}</a>
-        <a href="dashboard.html" class="dropdown-item">⌂ ${isBn ? 'আমার ড্যাশবোর্ড' : 'My Dashboard'}</a>
         <a href="request-blood.html" class="dropdown-item">⊕ ${isBn ? 'রক্তের আবেদন' : 'Request Blood'}</a>
         <a href="find-blood.html" class="dropdown-item">⌕ ${isBn ? 'রক্ত খুঁজুন' : 'Find Blood'}</a>
         <div class="dropdown-divider"></div>
