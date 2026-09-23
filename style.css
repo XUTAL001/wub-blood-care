@@ -990,7 +990,7 @@ textarea {
 }
 
 .text-accent-red {
-  color: #DC2626;
+  color: #DC2626 !important;
 }
 
 .hero-subtitle-tag {
@@ -3339,26 +3339,36 @@ textarea {
   .topbar,
   .topbar.glass-topbar {
     padding: 8px 12px !important;
-    gap: 8px !important;
-    min-height: 54px !important;
+    gap: 10px !important;
+    min-height: 52px !important;
     flex-wrap: nowrap !important;
+    justify-content: space-between !important;
   }
 
   .topbar-left {
     gap: 8px !important;
-    flex: 1 !important;
+    flex: 1 1 auto !important;
     min-width: 0 !important;
+    overflow: hidden !important;
   }
 
   .mobile-menu-btn {
     display: flex !important;
-    width: 36px !important;
-    height: 36px !important;
+    width: 34px !important;
+    height: 34px !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 19px !important;
+    font-size: 18px !important;
     padding: 0 !important;
+    border-radius: 8px !important;
     flex-shrink: 0 !important;
+  }
+
+  [data-theme="dark"] .mobile-menu-btn {
+    background: rgba(30, 41, 59, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+    color: #F1F5F9 !important;
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.1), 0 2px 8px rgba(0, 0, 0, 0.35) !important;
   }
 
   .mobile-topbar-brand {
@@ -3366,16 +3376,28 @@ textarea {
     align-items: center !important;
     gap: 6px !important;
     min-width: 0 !important;
+    overflow: hidden !important;
+    text-decoration: none !important;
   }
 
   .mobile-topbar-brand .mobile-logo-img {
-    width: 26px !important;
-    height: 26px !important;
+    width: 25px !important;
+    height: 25px !important;
+    flex-shrink: 0 !important;
   }
 
   .mobile-topbar-brand .mobile-brand-title {
-    font-size: 13.5px !important;
+    font-size: 12.5px !important;
     font-weight: 800 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    letter-spacing: 0.2px !important;
+    color: var(--primary);
+  }
+
+  [data-theme="dark"] .mobile-topbar-brand .mobile-brand-title {
+    color: #F8FAFC !important;
   }
 
   /* Hide topbar search on small phones to keep brand and actions clear */
@@ -3389,21 +3411,52 @@ textarea {
     align-items: center !important;
     gap: 6px !important;
     flex-shrink: 0 !important;
+    margin-left: auto !important;
+  }
+
+  .theme-toggle-btn {
+    width: 34px !important;
+    height: 34px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .theme-toggle-btn .theme-toggle-label {
+    display: none !important;
   }
 
   .glass-merged-pill {
-    padding: 2px 6px !important;
-    gap: 4px !important;
+    height: 34px !important;
+    padding: 2px 5px !important;
+    gap: 3px !important;
+    border-radius: 9999px !important;
+    flex-shrink: 0 !important;
   }
 
   .merged-notif-btn {
-    width: 32px !important;
-    height: 32px !important;
+    width: 28px !important;
+    height: 28px !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .merged-notif-btn svg {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .merged-pill-divider {
+    height: 16px !important;
+    margin: 0 1px !important;
   }
 
   .btn-notif-circle {
-    width: 32px !important;
-    height: 32px !important;
+    width: 28px !important;
+    height: 28px !important;
   }
 
   /* Compact user avatar */
@@ -3415,10 +3468,17 @@ textarea {
 
   .user-profile-btn,
   .topbar-user-pill-v2 {
-    padding: 2px !important;
+    padding: 0 !important;
     background: transparent !important;
     border-color: transparent !important;
     box-shadow: none !important;
+  }
+
+  .avatar-initials,
+  .user-avatar-circle {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 10.5px !important;
   }
 
   /* Notifications Panel - responsive centered */
@@ -7564,7 +7624,8 @@ input:checked+.slider-switch:before {
 }
 
 [data-lang="bn"] .mobile-brand-title {
-  font-size: 14px !important;
+  font-family: 'Hind Siliguri', 'Poppins', sans-serif;
+  letter-spacing: 0;
 }
 
 [data-lang="bn"] .sidebar-nav .nav-link span {
@@ -7632,17 +7693,75 @@ input:checked+.slider-switch:before {
 }
 
 
-/* Small Screen Adjustments */
+/* Small Screen Adjustments for Language Switcher & Mobile Topbar */
 @media (max-width: 640px) {
   .lang-toggle-btn {
-    padding: 0 7px;
-    height: 36px;
-    gap: 4px;
-    font-size: 11.5px;
+    padding: 0 8px !important;
+    height: 34px !important;
+    gap: 4px !important;
+    font-size: 11px !important;
+    border-radius: 9999px !important;
+    flex-shrink: 0 !important;
   }
 
-  .lang-opt-divider {
-    display: inline;
+  .lang-toggle-btn .lang-opt-divider {
+    display: none !important;
+  }
+
+  .lang-toggle-btn .lang-opt:not(.active) {
+    display: none !important;
+  }
+
+  .lang-toggle-btn .lang-opt.active {
+    padding: 0 !important;
+    background: transparent !important;
+    color: inherit !important;
+    font-weight: 800 !important;
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .topbar,
+  .topbar.glass-topbar {
+    padding: 6px 8px !important;
+    gap: 6px !important;
+  }
+
+  .topbar-left {
+    gap: 6px !important;
+  }
+
+  .mobile-topbar-brand .mobile-brand-title {
+    font-size: 11.5px !important;
+    max-width: 95px !important;
+  }
+
+  .mobile-topbar-brand .mobile-logo-img {
+    width: 23px !important;
+    height: 23px !important;
+  }
+
+  .mobile-menu-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 16px !important;
+  }
+
+  .lang-toggle-btn {
+    height: 32px !important;
+    padding: 0 6px !important;
+    font-size: 10.5px !important;
+  }
+
+  .theme-toggle-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .glass-merged-pill {
+    height: 32px !important;
+    padding: 2px 4px !important;
   }
 }
 

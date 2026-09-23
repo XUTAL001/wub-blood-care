@@ -1290,13 +1290,18 @@ function applyLanguageToDOM(lang) {
 
   // 5. University Mottos, Crest & Brand Text
   document.querySelectorAll(".brand-text h2").forEach(el => {
-    el.textContent = isBn ? "ডাব্লিউইউবি ব্লাডকেয়ার" : "WUB BloodCare";
+    el.innerHTML = isBn ? 'ডাব্লিউইউবি ব্লাড<span class="text-accent-red">কেয়ার</span>' : 'WUB Blood<span class="text-accent-red">Care</span>';
   });
   document.querySelectorAll(".brand-text span").forEach(el => {
     el.textContent = isBn ? "শিক্ষার্থীদের পাশে শিক্ষার্থীরা।" : "Students Helping Students.";
   });
   document.querySelectorAll(".mobile-brand-title").forEach(el => {
-    el.textContent = isBn ? "ডাব্লিউইউবি ব্লাডকেয়ার" : "WUB BloodCare";
+    const isAdmin = el.textContent.includes("Admin") || el.textContent.includes("অ্যাডমিন");
+    if (isAdmin) {
+      el.innerHTML = isBn ? 'ডাব্লিউইউবি ব্লাড<span class="text-accent-red">কেয়ার</span> অ্যাডমিন' : 'WUB Blood<span class="text-accent-red">Care</span> Admin';
+    } else {
+      el.innerHTML = isBn ? 'ডাব্লিউইউবি ব্লাড<span class="text-accent-red">কেয়ার</span>' : 'WUB Blood<span class="text-accent-red">Care</span>';
+    }
   });
   document.querySelectorAll(".uni-motto-cursive").forEach(el => {
     el.innerHTML = t("uni_motto");
@@ -1534,7 +1539,7 @@ function applyLanguageToDOM(lang) {
   }
 
   const whyArtH4 = document.querySelector(".why-donor-art-box h4");
-  if (whyArtH4) whyArtH4.textContent = isBn ? "ডাব্লিউইউবি ব্লাডকেয়ার" : "WUB BloodCare";
+  if (whyArtH4) whyArtH4.innerHTML = isBn ? 'ডাব্লিউইউবি ব্লাড<span class="text-accent-red">কেয়ার</span>' : 'WUB Blood<span class="text-accent-red">Care</span>';
   const whyArtP = document.querySelector(".why-donor-art-box p");
   if (whyArtP) whyArtP.textContent = isBn ? "শিক্ষার্থীদের পাশে শিক্ষার্থীরা।" : "Students Helping Students.";
 
