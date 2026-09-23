@@ -1,307 +1,340 @@
-﻿{
-    "departments":  [
-                        {
-                            "id":  1,
-                            "code":  "CSE",
-                            "name":  "Computer Science \u0026 Engineering",
-                            "created_at":  "2026-09-17T06:08:32.179Z"
-                        },
-                        {
-                            "id":  2,
-                            "code":  "EEE",
-                            "name":  "Electrical \u0026 Electronic Engineering",
-                            "created_at":  "2026-09-17T06:08:32.180Z"
-                        },
-                        {
-                            "id":  3,
-                            "code":  "BBA",
-                            "name":  "Business Administration",
-                            "created_at":  "2026-09-17T06:08:32.180Z"
-                        },
-                        {
-                            "id":  4,
-                            "code":  "ENG",
-                            "name":  "English",
-                            "created_at":  "2026-09-17T06:08:32.180Z"
-                        },
-                        {
-                            "id":  5,
-                            "code":  "PHARM",
-                            "name":  "Pharmacy",
-                            "created_at":  "2026-09-17T06:08:32.180Z"
-                        },
-                        {
-                            "id":  6,
-                            "code":  "CIVIL",
-                            "name":  "Civil Engineering",
-                            "created_at":  "2026-09-17T06:08:32.180Z"
-                        },
-                        {
-                            "id":  7,
-                            "code":  "LAW",
-                            "name":  "Law",
-                            "created_at":  "2026-09-17T06:08:32.180Z"
-                        },
-                        {
-                            "id":  8,
-                            "code":  "MPH",
-                            "name":  "Public Health",
-                            "created_at":  "2026-09-17T06:08:32.180Z"
-                        },
-                        {
-                            "id":  9,
-                            "code":  "THM",
-                            "name":  "Tourism \u0026 Hospitality Management",
-                            "created_at":  "2026-09-17T06:08:32.180Z"
-                        },
-                        {
-                            "id":  10,
-                            "code":  "ME",
-                            "name":  "Mechatronics Engineering",
-                            "created_at":  "2026-09-17T06:08:32.180Z"
-                        }
-                    ],
-    "locations":  [
-                      {
-                          "id":  1,
-                          "name":  "WUB Permanent Campus (Uttara)",
-                          "is_campus":  true,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  2,
-                          "name":  "Uttara",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  3,
-                          "name":  "Mirpur",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  4,
-                          "name":  "Pallabi",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  5,
-                          "name":  "Mohakhali",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  6,
-                          "name":  "Dhanmondi",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  7,
-                          "name":  "Mohammadpur",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  8,
-                          "name":  "Gulshan",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  9,
-                          "name":  "Banani",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  10,
-                          "name":  "Farmgate",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  11,
-                          "name":  "Motijheel",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  12,
-                          "name":  "Badda",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  13,
-                          "name":  "Rampura",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  14,
-                          "name":  "Tejgaon",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  15,
-                          "name":  "Agargaon",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  16,
-                          "name":  "Kafrul",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  17,
-                          "name":  "Khilkhet",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      },
-                      {
-                          "id":  18,
-                          "name":  "Bashundhara",
-                          "is_campus":  false,
-                          "created_at":  "2026-09-17T06:08:32.180Z"
-                      }
-                  ],
-    "users":  [
-                  {
-                      "id":  "usr_superadmin",
-                      "student_id":  "WUB-ADM-001",
-                      "name":  "Prof. Dr. M. Rahman",
-                      "email":  "superadmin@wub.edu.bd",
-                      "phone":  "01711000001",
-                      "password_hash":  "$2a$10$rPLdapEGNSDBxDMKwjWKM.Lxsh7cq8/mJibiFbluayZyLCgNtMpfy",
-                      "role":  "super_admin",
-                      "status":  "active",
-                      "is_verified":  true,
-                      "created_at":  "2026-09-17T06:08:32.400Z",
-                      "updated_at":  "2026-09-17T06:08:32.400Z"
-                  },
-                  {
-                      "id":  "usr_admin",
-                      "student_id":  "WUB-ADM-002",
-                      "name":  "Dr. Tanvir Ahmed",
-                      "email":  "admin@wub.edu.bd",
-                      "phone":  "01711000002",
-                      "password_hash":  "$2a$10$/TVIZQJXpWiXsFCvdVnacOpUnwWK4aGZhxdU9YZFfcjE4dYn0ZoBu",
-                      "role":  "admin",
-                      "status":  "active",
-                      "is_verified":  true,
-                      "created_at":  "2026-09-17T06:08:32.400Z",
-                      "updated_at":  "2026-09-17T06:08:32.400Z"
-                  },
-                  {
-                      "id":  "usr_moderator",
-                      "student_id":  "WUB-MOD-001",
-                      "name":  "Nusrat Jahan",
-                      "email":  "moderator@wub.edu.bd",
-                      "phone":  "01711000003",
-                      "password_hash":  "$2a$10$mLNZtw5hjuHFfWGx7K9mpesvttp3UsYXl4gZHGLOZ/MHJ0GQANmLi",
-                      "role":  "moderator",
-                      "status":  "active",
-                      "is_verified":  true,
-                      "created_at":  "2026-09-17T06:08:32.401Z",
-                      "updated_at":  "2026-09-17T06:08:32.401Z"
-                  }
-              ],
-    "profiles":  [
-                     {
-                         "user_id":  "usr_superadmin",
-                         "avatar_url":  null,
-                         "blood_group":  "O+",
-                         "dept_code":  "MPH",
-                         "location_name":  "Uttara",
-                         "bio":  "WUB Directorate of Health \u0026 Wellbeing Advisor.",
-                         "donor_status":  "approved",
-                         "availability":  "available",
-                         "last_donation_date":  "2025-11-15",
-                         "created_at":  "2026-09-17T06:08:32.401Z",
-                         "updated_at":  "2026-09-17T06:08:32.401Z"
-                     },
-                     {
-                         "user_id":  "usr_admin",
-                         "avatar_url":  null,
-                         "blood_group":  "A+",
-                         "dept_code":  "CSE",
-                         "location_name":  "WUB Permanent Campus (Uttara)",
-                         "bio":  "WUB BloodConnect System Administrator.",
-                         "donor_status":  "approved",
-                         "availability":  "available",
-                         "last_donation_date":  "2026-01-10",
-                         "created_at":  "2026-09-17T06:08:32.401Z",
-                         "updated_at":  "2026-09-17T06:08:32.401Z"
-                     },
-                     {
-                         "user_id":  "usr_moderator",
-                         "avatar_url":  null,
-                         "blood_group":  "B+",
-                         "dept_code":  "BBA",
-                         "location_name":  "Mirpur",
-                         "bio":  "Student Volunteer \u0026 Verification Moderator.",
-                         "donor_status":  "approved",
-                         "availability":  "available",
-                         "last_donation_date":  "2025-12-05",
-                         "created_at":  "2026-09-17T06:08:32.401Z",
-                         "updated_at":  "2026-09-17T06:08:32.401Z"
-                     }
-                 ],
-    "verification_requests":  [
-
-                              ],
-    "donor_profiles":  [
-
-                       ],
-    "blood_requests":  [
-
-                       ],
-    "request_matches":  [
-
-                        ],
-    "contact_requests":  [
-
-                         ],
-    "notifications":  [
-
-                      ],
-    "reports":  [
-
-                ],
-    "audit_logs":  [
-
-                   ],
-    "system_settings":  [
-                            {
-                                "key":  "platform_name",
-                                "value":  "WUB BloodConnect",
-                                "description":  "Official Platform Name"
-                            },
-                            {
-                                "key":  "university_name",
-                                "value":  "World University of Bangladesh",
-                                "description":  "Institution"
-                            },
-                            {
-                                "key":  "verification_required",
-                                "value":  "true",
-                                "description":  "Require student verification for protected features"
-                            },
-                            {
-                                "key":  "anti_scam_strict_mode",
-                                "value":  "true",
-                                "description":  "Block monetary keywords and spam requests"
-                            },
-                            {
-                                "key":  "request_auto_expire_hours",
-                                "value":  "72",
-                                "description":  "Default request validity duration"
-                            }
-                        ]
+{
+  "departments": [
+    {
+      "id": 1,
+      "code": "CSE",
+      "name": "Computer Science & Engineering",
+      "created_at": "2026-09-17T06:08:32.179Z"
+    },
+    {
+      "id": 2,
+      "code": "EEE",
+      "name": "Electrical & Electronic Engineering",
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 3,
+      "code": "BBA",
+      "name": "Business Administration",
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 4,
+      "code": "ENG",
+      "name": "English",
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 5,
+      "code": "PHARM",
+      "name": "Pharmacy",
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 6,
+      "code": "CIVIL",
+      "name": "Civil Engineering",
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 7,
+      "code": "LAW",
+      "name": "Law",
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 8,
+      "code": "MPH",
+      "name": "Public Health",
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 9,
+      "code": "THM",
+      "name": "Tourism & Hospitality Management",
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 10,
+      "code": "ME",
+      "name": "Mechatronics Engineering",
+      "created_at": "2026-09-17T06:08:32.180Z"
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "name": "WUB Permanent Campus (Uttara)",
+      "is_campus": true,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 2,
+      "name": "Uttara",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 3,
+      "name": "Mirpur",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 4,
+      "name": "Pallabi",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 5,
+      "name": "Mohakhali",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 6,
+      "name": "Dhanmondi",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 7,
+      "name": "Mohammadpur",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 8,
+      "name": "Gulshan",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 9,
+      "name": "Banani",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 10,
+      "name": "Farmgate",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 11,
+      "name": "Motijheel",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 12,
+      "name": "Badda",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 13,
+      "name": "Rampura",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 14,
+      "name": "Tejgaon",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 15,
+      "name": "Agargaon",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 16,
+      "name": "Kafrul",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 17,
+      "name": "Khilkhet",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    },
+    {
+      "id": 18,
+      "name": "Bashundhara",
+      "is_campus": false,
+      "created_at": "2026-09-17T06:08:32.180Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr_superadmin",
+      "student_id": "WUB-ADM-001",
+      "name": "Prof. Dr. M. Rahman",
+      "email": "superadmin@wub.edu.bd",
+      "phone": "01711000001",
+      "password_hash": "$2a$10$rPLdapEGNSDBxDMKwjWKM.Lxsh7cq8/mJibiFbluayZyLCgNtMpfy",
+      "role": "super_admin",
+      "status": "active",
+      "is_verified": true,
+      "created_at": "2026-09-17T06:08:32.400Z",
+      "updated_at": "2026-09-17T06:08:32.400Z"
+    },
+    {
+      "id": "usr_admin",
+      "student_id": "WUB-ADM-002",
+      "name": "Dr. Tanvir Ahmed",
+      "email": "admin@wub.edu.bd",
+      "phone": "01711000002",
+      "password_hash": "$2a$10$/TVIZQJXpWiXsFCvdVnacOpUnwWK4aGZhxdU9YZFfcjE4dYn0ZoBu",
+      "role": "admin",
+      "status": "active",
+      "is_verified": true,
+      "created_at": "2026-09-17T06:08:32.400Z",
+      "updated_at": "2026-09-17T06:08:32.400Z"
+    },
+    {
+      "id": "usr_moderator",
+      "student_id": "WUB-MOD-001",
+      "name": "Nusrat Jahan",
+      "email": "moderator@wub.edu.bd",
+      "phone": "01711000003",
+      "password_hash": "$2a$10$mLNZtw5hjuHFfWGx7K9mpesvttp3UsYXl4gZHGLOZ/MHJ0GQANmLi",
+      "role": "moderator",
+      "status": "active",
+      "is_verified": true,
+      "created_at": "2026-09-17T06:08:32.401Z",
+      "updated_at": "2026-09-17T06:08:32.401Z"
+    },
+    {
+      "id": "usr_tanviralamshifat",
+      "student_id": "tanviralamshifat",
+      "name": "Tanvir Alam Shifat",
+      "email": "tanviralamshifat@wub.edu.bd",
+      "phone": "01711000000",
+      "password_hash": "$2a$10$jhZ8wBUpRx7D0MMnqmpybe.gEojfxZl6IkNfvXQCnTcSgRemM7IH2",
+      "role": "super_admin",
+      "status": "active",
+      "is_verified": true,
+      "created_at": "2026-09-23T09:30:00.000Z",
+      "updated_at": "2026-09-23T09:30:00.000Z"
+    }
+  ],
+  "profiles": [
+    {
+      "user_id": "usr_superadmin",
+      "avatar_url": null,
+      "blood_group": "O+",
+      "dept_code": "MPH",
+      "location_name": "Uttara",
+      "bio": "WUB Directorate of Health & Wellbeing Advisor.",
+      "donor_status": "approved",
+      "availability": "available",
+      "last_donation_date": "2025-11-15",
+      "created_at": "2026-09-17T06:08:32.401Z",
+      "updated_at": "2026-09-17T06:08:32.401Z"
+    },
+    {
+      "user_id": "usr_admin",
+      "avatar_url": null,
+      "blood_group": "A+",
+      "dept_code": "CSE",
+      "location_name": "WUB Permanent Campus (Uttara)",
+      "bio": "WUB BloodConnect System Administrator.",
+      "donor_status": "approved",
+      "availability": "available",
+      "last_donation_date": "2026-01-10",
+      "created_at": "2026-09-17T06:08:32.401Z",
+      "updated_at": "2026-09-17T06:08:32.401Z"
+    },
+    {
+      "user_id": "usr_moderator",
+      "avatar_url": null,
+      "blood_group": "B+",
+      "dept_code": "BBA",
+      "location_name": "Mirpur",
+      "bio": "Student Volunteer & Verification Moderator.",
+      "donor_status": "approved",
+      "availability": "available",
+      "last_donation_date": "2025-12-05",
+      "created_at": "2026-09-17T06:08:32.401Z",
+      "updated_at": "2026-09-17T06:08:32.401Z"
+    },
+    {
+      "user_id": "usr_tanviralamshifat",
+      "avatar_url": null,
+      "blood_group": "O+",
+      "dept_code": "CSE",
+      "location_name": "Uttara",
+      "bio": "Lead System Administrator & BloodCare Coordinator.",
+      "donor_status": "approved",
+      "availability": "available",
+      "last_donation_date": null,
+      "created_at": "2026-09-23T09:30:00.000Z",
+      "updated_at": "2026-09-23T09:30:00.000Z"
+    }
+  ],
+  "verification_requests": [],
+  "donor_profiles": [],
+  "blood_requests": [],
+  "request_matches": [],
+  "contact_requests": [],
+  "notifications": [],
+  "reports": [],
+  "audit_logs": [
+    {
+      "id": "aud_1790155884996_94ec2d",
+      "actor_id": "usr_tanviralamshifat",
+      "action": "USER_LOGIN",
+      "target_type": "USER",
+      "target_id": "usr_tanviralamshifat",
+      "details": "{}",
+      "ip_address": "::1",
+      "created_at": "2026-09-23T09:31:24.996Z",
+      "updated_at": "2026-09-23T09:31:24.996Z"
+    },
+    {
+      "id": "aud_1790155890114_fc4b7d",
+      "actor_id": "usr_tanviralamshifat",
+      "action": "USER_LOGIN",
+      "target_type": "USER",
+      "target_id": "usr_tanviralamshifat",
+      "details": "{}",
+      "ip_address": "::1",
+      "created_at": "2026-09-23T09:31:30.114Z",
+      "updated_at": "2026-09-23T09:31:30.115Z"
+    }
+  ],
+  "system_settings": [
+    {
+      "key": "platform_name",
+      "value": "WUB BloodConnect",
+      "description": "Official Platform Name"
+    },
+    {
+      "key": "university_name",
+      "value": "World University of Bangladesh",
+      "description": "Institution"
+    },
+    {
+      "key": "verification_required",
+      "value": "true",
+      "description": "Require student verification for protected features"
+    },
+    {
+      "key": "anti_scam_strict_mode",
+      "value": "true",
+      "description": "Block monetary keywords and spam requests"
+    },
+    {
+      "key": "request_auto_expire_hours",
+      "value": "72",
+      "description": "Default request validity duration"
+    }
+  ]
 }

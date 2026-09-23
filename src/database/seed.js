@@ -74,6 +74,19 @@ async function seed() {
       is_verified: true,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString()
+    },
+    {
+      id: 'usr_tanviralamshifat',
+      student_id: 'tanviralamshifat',
+      name: 'Tanvir Alam Shifat',
+      email: 'tanviralamshifat@wub.edu.bd',
+      phone: '01711000000',
+      password_hash: bcrypt.hashSync('shifat001', 10),
+      role: 'super_admin',
+      status: 'active',
+      is_verified: true,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     }
   ];
 
@@ -112,6 +125,19 @@ async function seed() {
       dept_code: 'BBA',
       location_name: 'Mirpur',
       bio: 'Student Volunteer & Verification Moderator.',
+      donor_status: 'approved',
+      availability: 'available',
+      last_donation_date: null,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    },
+    {
+      user_id: 'usr_tanviralamshifat',
+      avatar_url: null,
+      blood_group: 'O+',
+      dept_code: 'CSE',
+      location_name: 'Uttara',
+      bio: 'Lead System Administrator & BloodCare Coordinator.',
       donor_status: 'approved',
       availability: 'available',
       last_donation_date: null,

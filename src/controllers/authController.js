@@ -157,10 +157,13 @@ async function login(req, res) {
 
     const store = db.getStore();
     const user = store.users.find(u => 
-      u.student_id.toLowerCase() === loginId || 
-      u.email.toLowerCase() === loginId ||
-      u.role.toLowerCase() === loginId ||
-      (loginId === 'superadmin' && u.role === 'super_admin')
+      (u.student_id && u.student_id.toLowerCase() === loginId) || 
+      (u.email && u.email.toLowerCase() === loginId) ||
+      (u.id && u.id.toLowerCase() === loginId) ||
+      (u.username && u.username.toLowerCase() === loginId) ||
+      (u.role && u.role.toLowerCase() === loginId) ||
+      (loginId === 'superadmin' && u.role === 'super_admin') ||
+      (loginId === 'admin' && (u.role === 'admin' || u.role === 'super_admin'))
     );
 
     if (!user) {

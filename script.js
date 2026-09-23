@@ -116,6 +116,21 @@ const INITIAL_USERS = [
     phone: "01711000003",
     address: "Mirpur",
     status: "active"
+  },
+  {
+    id: "tanviralamshifat",
+    username: "tanviralamshifat",
+    password: "shifat001",
+    name: "Tanvir Alam Shifat",
+    email: "tanviralamshifat@wub.edu.bd",
+    role: "super_admin",
+    dept: "Computer Science & Engineering (CSE)",
+    blood: "O+",
+    phone: "01711000000",
+    address: "Uttara",
+    status: "active",
+    isDonor: false,
+    verificationStatus: "verified"
   }
 ];
 
@@ -188,16 +203,37 @@ const INITIAL_AUDIT_LOGS = [];
 
 function getStoredUsers() {
   const data = localStorage.getItem("wub_blood_users_v7") || localStorage.getItem("wub_blood_users");
-  if (!data) {
-    localStorage.setItem("wub_blood_users_v7", JSON.stringify(INITIAL_USERS));
-    return INITIAL_USERS;
+  let list = INITIAL_USERS;
+  if (data) {
+    try {
+      const parsed = JSON.parse(data);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        list = parsed;
+      }
+    } catch (e) {
+      list = INITIAL_USERS;
+    }
   }
-  try {
-    const parsed = JSON.parse(data);
-    return Array.isArray(parsed) ? parsed : INITIAL_USERS;
-  } catch (e) {
-    return INITIAL_USERS;
-  }
+  // Ensure default admin accounts including tanviralamshifat exist
+  INITIAL_USERS.forEach(initUser => {
+    const exists = list.some(u => 
+      (u.username && u.username.toLowerCase() === initUser.username.toLowerCase()) || 
+      (u.id && u.id.toLowerCase() === initUser.id.toLowerCase())
+    );
+    if (!exists) {
+      list.unshift(initUser);
+    } else {
+      const idx = list.findIndex(u => 
+        (u.username && u.username.toLowerCase() === initUser.username.toLowerCase()) || 
+        (u.id && u.id.toLowerCase() === initUser.id.toLowerCase())
+      );
+      if (idx !== -1 && list[idx].password !== initUser.password) {
+        list[idx].password = initUser.password;
+      }
+    }
+  });
+  localStorage.setItem("wub_blood_users_v7", JSON.stringify(list));
+  return list;
 }
 
 function saveUsers(users) {
