@@ -7607,3 +7607,41 @@ input:checked+.slider-switch:before {
     gap: 8px;
   }
 }
+
+/* ==========================================================================
+   Admin Console Subfilter Tabs (Review Queue Filtering)
+   ========================================================================== */
+.admin-subfilter-group {
+  display: inline-flex;
+  background: var(--bg-card);
+  padding: 3px;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  gap: 4px;
+}
+
+.admin-subfilter-btn {
+  padding: 5px 14px;
+  font-size: 11.5px;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.admin-subfilter-btn:hover {
+  color: var(--text);
+  background: var(--bg-hover, rgba(0, 0, 0, 0.04));
+}
+
+.admin-subfilter-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(185, 28, 28, 0.28);
+}

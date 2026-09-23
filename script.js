@@ -4128,6 +4128,37 @@ function renderAdminConsole() {
   renderAdminAuditLogsTable();
 }
 
+let adminVerifFilter = 'pending';
+let adminDonorFilter = 'pending';
+let adminReqFilter = 'pending';
+
+function setAdminVerifFilter(filter) {
+  adminVerifFilter = filter;
+  ['pending', 'approved', 'all'].forEach(f => {
+    const btn = document.getElementById(`filterVerifBtn_${f}`);
+    if (btn) btn.classList.toggle('active', f === filter);
+  });
+  renderAdminVerificationsTable();
+}
+
+function setAdminDonorFilter(filter) {
+  adminDonorFilter = filter;
+  ['pending', 'verified', 'all'].forEach(f => {
+    const btn = document.getElementById(`filterDonorBtn_${f}`);
+    if (btn) btn.classList.toggle('active', f === filter);
+  });
+  renderAdminDonorQueue();
+}
+
+function setAdminReqFilter(filter) {
+  adminReqFilter = filter;
+  ['pending', 'approved', 'all'].forEach(f => {
+    const btn = document.getElementById(`filterReqBtn_${f}`);
+    if (btn) btn.classList.toggle('active', f === filter);
+  });
+  renderAdminRequestsTable();
+}
+
 function switchAdminTab(tabName) {
   document.querySelectorAll(".admin-tab-btn").forEach(btn => btn.classList.remove("active"));
   document.querySelectorAll(".admin-tab-pane").forEach(pane => pane.classList.remove("active"));
@@ -4168,21 +4199,48 @@ async function renderAdminDonorQueue() {
     } catch (e) { }
   }
 
-  // Merge local donors
+  // Merge local donors with comprehensive deduplication
   const localDonors = getStoredDonors();
   localDonors.forEach(ld => {
-    const exists = donors.some(d => d.id === ld.id || d.userId === ld.userId);
-    if (!exists) {
+    const matchedIdx = donors.findIndex(d => 
+      d.id === ld.id || 
+      String(d.userId).toLowerCase() === String(ld.userId).toLowerCase() || 
+      (d.phone && ld.phone && d.phone === ld.phone)
+    );
+    if (matchedIdx !== -1) {
+      if (ld.verificationStatus === 'verified' || donors[matchedIdx].verificationStatus === 'verified') {
+        donors[matchedIdx].verificationStatus = 'verified';
+        donors[matchedIdx].available = true;
+      }
+    } else {
       donors.push(ld);
     }
   });
 
-  if (donors.length === 0) {
-    container.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 24px; color: var(--text-muted);">No donors currently registered.</td></tr>`;
+  // Update Pending badge count
+  const pendingCount = donors.filter(d => d.verificationStatus === 'pending').length;
+  const countBadge = document.getElementById("countDonorPending");
+  if (countBadge) countBadge.textContent = pendingCount;
+  const statPending = document.getElementById("adminStatPendingVerif");
+  if (statPending) statPending.textContent = pendingCount;
+
+  // Apply Filter
+  let filtered = donors;
+  if (adminDonorFilter === 'pending') {
+    filtered = donors.filter(d => d.verificationStatus === 'pending');
+  } else if (adminDonorFilter === 'verified') {
+    filtered = donors.filter(d => d.verificationStatus === 'verified' || d.verificationStatus === 'approved');
+  }
+
+  if (filtered.length === 0) {
+    const emptyMsg = adminDonorFilter === 'pending'
+      ? '🎉 No donor registration requests currently awaiting verification. All caught up!'
+      : (adminDonorFilter === 'verified' ? 'No verified donors currently in the registry.' : 'No donors registered yet.');
+    container.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 28px; color: var(--text-muted); font-size: 13px;">${emptyMsg}</td></tr>`;
     return;
   }
 
-  container.innerHTML = donors.map(d => {
+  container.innerHTML = filtered.map(d => {
     const isPending = d.verificationStatus === "pending";
     const statusBadge = isPending
       ? `<span class="badge-status badge-unverified-student">Pending Verification</span>`
@@ -4228,7 +4286,16 @@ async function renderAdminDonorQueue() {
 async function adminVerifyDonor(donorId) {
   const token = await getAdminAuthToken();
   const donors = getStoredDonors();
-  let donor = donors.find(d => d.id === donorId || String(d.id) === String(donorId) || d.userId === donorId);
+  const cleanId = String(donorId).replace(/^donor-/, '').replace(/^dnr_/, '').toLowerCase();
+  
+  let donor = donors.find(d => 
+    String(d.id) === String(donorId) || 
+    String(d.id).toLowerCase() === cleanId || 
+    String(d.userId).toLowerCase() === String(donorId).toLowerCase() || 
+    String(d.userId).toLowerCase() === cleanId ||
+    String(d.id).toLowerCase().includes(cleanId) ||
+    (d.phone && String(d.phone) === String(donorId))
+  );
 
   const reviewPayload = {
     action: 'approve',
@@ -4277,23 +4344,40 @@ async function adminVerifyDonor(donorId) {
   if (donor) {
     donor.verificationStatus = "verified";
     donor.available = true;
-    saveDonors(donors);
+  } else {
+    // Look through all local donors for matching record
+    donors.forEach(d => {
+      if (String(d.id).toLowerCase().includes(cleanId) || String(d.userId).toLowerCase().includes(cleanId)) {
+        d.verificationStatus = "verified";
+        d.available = true;
+      }
+    });
+  }
+  saveDonors(donors);
 
-    // Sync user record
-    const users = getStoredUsers();
-    const user = users.find(u => u.id === donor.userId || u.phone === donor.phone);
-    if (user) {
-      user.verificationStatus = "verified";
-      user.isDonor = true;
-      user.donorAvailable = true;
-      saveUsers(users);
-    }
+  // Sync matching user record in users store
+  const users = getStoredUsers();
+  const matchedUser = users.find(u => 
+    String(u.id).toLowerCase() === cleanId || 
+    (u.student_id && String(u.student_id).toLowerCase() === cleanId) ||
+    (u.username && String(u.username).toLowerCase() === cleanId) ||
+    (donor && (String(u.id).toLowerCase() === String(donor.userId).toLowerCase() || (u.student_id && String(u.student_id).toLowerCase() === String(donor.userId).toLowerCase()))) ||
+    (donor && donor.phone && u.phone === donor.phone)
+  );
+  if (matchedUser) {
+    matchedUser.verificationStatus = "verified";
+    matchedUser.is_verified = true;
+    matchedUser.isDonor = true;
+    matchedUser.donorAvailable = true;
+    saveUsers(users);
+  }
 
-    logAuditEvent("VERIFY_DONOR", donor.name, `Verified ${donor.blood} donor (${donor.userId}) by ${getCurrentUser()?.name}`);
+  logAuditEvent("VERIFY_DONOR", donor?.name || cleanId, `Verified donor (${donor?.userId || cleanId}) by ${getCurrentUser()?.name || 'Admin'}`);
+  if (donor?.userId) {
     createNotification("student", donor.userId, "Donor Verification Approved!", "Your WUB Blood donor registration has been verified! You are now active in Find Blood.", "match", "Verified");
   }
 
-  showToast(`Donor has been verified and is now live in the Find Blood directory.`, "success");
+  showToast(`Donor has been verified and is now live in Find Blood!`, "success");
   renderAdminConsole();
 }
 
@@ -4381,24 +4465,51 @@ async function renderAdminRequestsTable() {
           units: r.units_needed || 1,
           location: r.hospital_name || r.location_name || 'Uttara',
           urgency: (r.urgency_level || 'normal').toUpperCase(),
-          status: r.status === 'active' ? 'Approved' : (r.status === 'pending' ? 'Pending' : (r.status === 'fulfilled' ? 'Completed' : 'Rejected')),
+          status: (r.status === 'active' || r.status === 'Approved') ? 'Approved' : ((r.status === 'pending' || r.status === 'Pending') ? 'Pending' : (r.status === 'fulfilled' ? 'Completed' : 'Rejected')),
           requesterId: r.requester_id
         }));
       }
     } catch (e) { }
   }
 
-  // Merge local requests
+  // Merge local requests with deduplication
   const localReqs = getStoredRequests();
   localReqs.forEach(lr => {
-    const exists = reqs.some(r => r.id === lr.id || String(r.id) === String(lr.id));
-    if (!exists) {
+    const cleanLrId = String(lr.id).replace(/^req_/, '').replace(/^req-/, '');
+    const matchedIdx = reqs.findIndex(r => 
+      r.id === lr.id || 
+      String(r.id) === String(lr.id) ||
+      String(r.id).replace(/^req_/, '').replace(/^req-/, '') === cleanLrId
+    );
+    if (matchedIdx !== -1) {
+      if (lr.status === 'Approved' || reqs[matchedIdx].status === 'Approved') {
+        reqs[matchedIdx].status = 'Approved';
+      }
+    } else {
       reqs.push(lr);
     }
   });
 
-  if (reqs.length === 0) {
-    table.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 24px; color: var(--text-muted);">No blood requests submitted.</td></tr>`;
+  // Update Pending badge count
+  const pendingCount = reqs.filter(r => r.status === 'Pending' || r.status === 'pending').length;
+  const countBadge = document.getElementById("countReqPending");
+  if (countBadge) countBadge.textContent = pendingCount;
+  const statPending = document.getElementById("adminStatPendingReqs");
+  if (statPending) statPending.textContent = pendingCount;
+
+  // Apply Filter
+  let filtered = reqs;
+  if (adminReqFilter === 'pending') {
+    filtered = reqs.filter(r => r.status === 'Pending' || r.status === 'pending');
+  } else if (adminReqFilter === 'approved') {
+    filtered = reqs.filter(r => r.status === 'Approved' || r.status === 'Active' || r.status === 'active');
+  }
+
+  if (filtered.length === 0) {
+    const emptyMsg = adminReqFilter === 'pending'
+      ? '🎉 No blood requests currently awaiting broadcast review. All caught up!'
+      : (adminReqFilter === 'approved' ? 'No approved live requests.' : 'No blood requests submitted.');
+    table.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 28px; color: var(--text-muted); font-size: 13px;">${emptyMsg}</td></tr>`;
     return;
   }
 
@@ -4411,7 +4522,7 @@ async function renderAdminRequestsTable() {
     }
   };
 
-  table.innerHTML = reqs.map((r) => `
+  table.innerHTML = filtered.map((r) => `
     <tr>
       <td><b style="color: var(--accent); font-size: 14px;">${r.blood}</b></td>
       <td>
@@ -4424,10 +4535,10 @@ async function renderAdminRequestsTable() {
       <td><span class="badge-status ${getStatusClass(r.status)}">${r.status || 'Pending'}</span></td>
       <td>
         <div style="display: flex; gap: 4px;">
-          ${r.status === 'Pending' ? `
+          ${(r.status === 'Pending' || r.status === 'pending') ? `
             <button class="btn btn-sm btn-primary" onclick="adminApproveRequest('${r.id}')" title="Approve emergency broadcast">Approve</button>
             <button class="btn btn-sm btn-outline" onclick="adminRejectRequest('${r.id}')" style="color: #DC2626; border-color: #FCA5A5;" title="Reject request">Reject</button>
-          ` : r.status === 'Approved' ? `
+          ` : (r.status === 'Approved' || r.status === 'Active' || r.status === 'active') ? `
             <button class="btn btn-sm btn-outline" onclick="adminCompleteRequest('${r.id}')" style="color: #059669; border-color: #10B981;" title="Mark fulfilled">Complete</button>
           ` : `
             <span style="font-size: 11px; color: var(--text-muted);">Archived</span>
@@ -4455,13 +4566,25 @@ async function adminApproveRequest(reqId) {
     }
   }
 
+  const cleanReqId = String(reqId).replace(/^req_/, '').replace(/^req-/, '');
   const reqs = getStoredRequests();
-  const req = reqs.find(r => r.id === reqId || String(r.id) === String(reqId));
+  const req = reqs.find(r => 
+    r.id === reqId || 
+    String(r.id) === String(reqId) ||
+    String(r.id).replace(/^req_/, '').replace(/^req-/, '') === cleanReqId
+  );
   if (req) {
     req.status = "Approved";
     req.reviewedBy = getCurrentUser()?.name || "Admin";
     saveRequests(reqs);
     createNotification("student", req.requesterId, "Blood Request Approved & Broadcasted", `Your request for ${req.blood} has been approved by WUB Health Office. Donors can now respond.`, "match", "Approved");
+  } else {
+    reqs.forEach(r => {
+      if (String(r.id).includes(cleanReqId)) {
+        r.status = "Approved";
+      }
+    });
+    saveRequests(reqs);
   }
 
   logAuditEvent("APPROVE_REQUEST", reqId, `Approved blood request #${reqId}`);
@@ -4650,30 +4773,93 @@ async function renderAdminVerificationsTable() {
     } catch (e) { }
   }
 
+  // Local verification overrides
+  let verifStore = [];
+  try {
+    verifStore = JSON.parse(localStorage.getItem("wub_blood_verifications_v7") || "[]");
+  } catch (e) { verifStore = []; }
+
+  // Sync overrides into verifications array
+  verifications.forEach(v => {
+    const override = verifStore.find(ov => ov.id === v.id || ov.student_id === v.student_id);
+    if (override) {
+      v.status = override.status;
+    }
+  });
+
   // Check local store for any pending students not yet listed
   const store = (typeof getStoredUsers === 'function') ? getStoredUsers() : [];
   const pendingLocal = store.filter(u => u.verificationStatus === 'pending');
   pendingLocal.forEach(u => {
-    const exists = verifications.some(v => v.student_id === u.id || v.user_email === u.email || v.id === ('ver_' + u.id));
+    const exists = verifications.some(v => 
+      v.student_id === u.id || 
+      v.student_id === u.student_id || 
+      v.user_email === u.email || 
+      v.id === ('ver_' + u.id) ||
+      (u.student_id && v.id === ('ver_' + u.student_id))
+    );
     if (!exists) {
+      const override = verifStore.find(ov => 
+        ov.id === ('ver_' + u.id) || 
+        (u.student_id && ov.id === ('ver_' + u.student_id)) ||
+        ov.student_id === u.student_id || 
+        ov.student_id === u.id
+      );
       verifications.unshift({
-        id: 'ver_' + u.id,
+        id: 'ver_' + (u.student_id || u.id),
         user_name: u.name,
         user_email: u.email,
-        student_id: u.id,
+        student_id: u.student_id || u.id,
         department: u.dept || 'WUB',
-        status: 'pending',
+        status: override ? override.status : 'pending',
         created_at: new Date().toISOString()
       });
     }
   });
 
-  if (verifications.length === 0) {
-    table.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 24px; color: var(--text-muted);">No student verification requests currently pending.</td></tr>`;
+  // Also include locally verified users if viewing verified or all
+  const verifiedLocal = store.filter(u => u.verificationStatus === 'verified' || u.is_verified);
+  verifiedLocal.forEach(u => {
+    const exists = verifications.some(v => 
+      v.student_id === u.id || 
+      v.student_id === u.student_id || 
+      v.user_email === u.email
+    );
+    if (!exists) {
+      verifications.push({
+        id: 'ver_' + (u.student_id || u.id),
+        user_name: u.name,
+        user_email: u.email,
+        student_id: u.student_id || u.id,
+        department: u.dept || 'WUB',
+        status: 'approved',
+        created_at: u.created_at || new Date().toISOString()
+      });
+    }
+  });
+
+  // Update Pending badge count
+  const pendingCount = verifications.filter(v => v.status === 'pending').length;
+  const countBadge = document.getElementById("countVerifPending");
+  if (countBadge) countBadge.textContent = pendingCount;
+
+  // Apply Filter
+  let filtered = verifications;
+  if (adminVerifFilter === 'pending') {
+    filtered = verifications.filter(v => v.status === 'pending');
+  } else if (adminVerifFilter === 'approved') {
+    filtered = verifications.filter(v => v.status === 'approved');
+  }
+
+  if (filtered.length === 0) {
+    const emptyMsg = adminVerifFilter === 'pending'
+      ? '🎉 No student identity verification requests currently pending. All caught up!'
+      : (adminVerifFilter === 'approved' ? 'No approved student verifications on record.' : 'No verification requests recorded.');
+    table.innerHTML = `<tr><td colspan="7" style="text-align: center; padding: 28px; color: var(--text-muted); font-size: 13px;">${emptyMsg}</td></tr>`;
     return;
   }
 
-  table.innerHTML = verifications.map(v => `
+  table.innerHTML = filtered.map(v => `
     <tr>
       <td>
         <div style="font-weight: 700;">${v.user_name}</div>
@@ -4704,7 +4890,7 @@ async function renderAdminVerificationsTable() {
               Reject
             </button>
           ` : `
-            <span style="font-size: 11px; color: var(--text-muted);">Reviewed</span>
+            <span style="font-size: 11px; color: #059669; font-weight: 600;">✓ Verified</span>
           `}
         </div>
       </td>
@@ -4730,11 +4916,23 @@ async function adminReviewVerification(verId, action) {
   }
 
   // Always sync local store for instant UI feedback
-  const cleanId = String(verId).replace(/^ver_/, '');
+  const cleanId = String(verId).replace(/^ver_/, '').toLowerCase();
   const users = getStoredUsers();
-  const userToUpdate = users.find(u => u.id === cleanId || u.id === verId || ('ver_' + u.id) === verId || u.email === verId);
+  const userToUpdate = users.find(u => 
+    String(u.id).toLowerCase() === cleanId || 
+    String(u.id).toLowerCase() === String(verId).toLowerCase() || 
+    ('ver_' + String(u.id).toLowerCase()) === String(verId).toLowerCase() || 
+    (u.student_id && String(u.student_id).toLowerCase() === cleanId) ||
+    (u.student_id && ('ver_' + String(u.student_id).toLowerCase()) === String(verId).toLowerCase()) ||
+    (u.email && String(u.email).toLowerCase() === cleanId) ||
+    (u.email && String(u.email).toLowerCase() === String(verId).toLowerCase()) ||
+    (u.username && String(u.username).toLowerCase() === cleanId)
+  );
+
+  const newStatus = (action === 'approve') ? 'verified' : 'rejected';
   if (userToUpdate) {
-    userToUpdate.verificationStatus = (action === 'approve') ? 'verified' : 'rejected';
+    userToUpdate.verificationStatus = newStatus;
+    userToUpdate.is_verified = (action === 'approve');
     if (action === 'approve') {
       userToUpdate.isDonor = true;
       userToUpdate.donorAvailable = true;
@@ -4742,16 +4940,47 @@ async function adminReviewVerification(verId, action) {
     saveUsers(users);
   }
 
+  // Persist review in local overrides so it never reverts to pending
+  let verifStore = [];
+  try {
+    verifStore = JSON.parse(localStorage.getItem("wub_blood_verifications_v7") || "[]");
+  } catch (e) { verifStore = []; }
+
+  const stdId = userToUpdate?.student_id || userToUpdate?.id || cleanId;
+  const existingIdx = verifStore.findIndex(v => v.id === verId || v.student_id === stdId || v.student_id === cleanId);
+  if (existingIdx !== -1) {
+    verifStore[existingIdx].status = (action === 'approve') ? 'approved' : 'rejected';
+  } else {
+    verifStore.push({
+      id: verId,
+      student_id: stdId,
+      status: (action === 'approve') ? 'approved' : 'rejected'
+    });
+  }
+  localStorage.setItem("wub_blood_verifications_v7", JSON.stringify(verifStore));
+
+  // Sync donor profile
   const donors = getStoredDonors();
-  let donorToUpdate = donors.find(d => d.userId === cleanId || d.userId === verId || d.id === verId || (userToUpdate && (d.userId === userToUpdate.id || d.phone === userToUpdate.phone)));
+  let donorToUpdate = donors.find(d => 
+    String(d.userId).toLowerCase() === cleanId || 
+    String(d.userId).toLowerCase() === String(verId).toLowerCase() || 
+    String(d.id).toLowerCase() === String(verId).toLowerCase() || 
+    String(d.id).toLowerCase() === cleanId ||
+    (userToUpdate && (
+      String(d.userId).toLowerCase() === String(userToUpdate.id).toLowerCase() || 
+      (userToUpdate.student_id && String(d.userId).toLowerCase() === String(userToUpdate.student_id).toLowerCase()) ||
+      (userToUpdate.phone && d.phone === userToUpdate.phone)
+    ))
+  );
+
   if (donorToUpdate) {
-    donorToUpdate.verificationStatus = (action === 'approve') ? 'verified' : 'rejected';
+    donorToUpdate.verificationStatus = newStatus;
     if (action === 'approve') donorToUpdate.available = true;
     saveDonors(donors);
   } else if (action === 'approve' && userToUpdate) {
     donors.unshift({
-      id: "donor-" + (userToUpdate.id || Date.now()),
-      userId: userToUpdate.id,
+      id: "donor-" + (userToUpdate.student_id || userToUpdate.id || Date.now()),
+      userId: userToUpdate.student_id || userToUpdate.id,
       name: userToUpdate.name,
       initials: (userToUpdate.name || 'WUB').split(" ").map(w => w[0]).join("").substring(0, 2).toUpperCase(),
       avatarClass: "avatar-ar",
@@ -4768,8 +4997,8 @@ async function adminReviewVerification(verId, action) {
     saveDonors(donors);
   }
 
-  logAuditEvent(action === 'approve' ? 'VERIFY_STUDENT' : 'REJECT_STUDENT', verId, `${action === 'approve' ? 'Approved' : 'Rejected'} verification for ID ${verId}`);
-  showToast(`Verification ${action === 'approve' ? 'approved' : 'rejected'} successfully!`, 'success');
+  logAuditEvent(action === 'approve' ? 'VERIFY_STUDENT' : 'REJECT_STUDENT', verId, `${action === 'approve' ? 'Approved' : 'Rejected'} verification for student ${userToUpdate?.name || cleanId}`);
+  showToast(`Student verification ${action === 'approve' ? 'approved' : 'rejected'} successfully!`, 'success');
   renderAdminConsole();
 }
 
