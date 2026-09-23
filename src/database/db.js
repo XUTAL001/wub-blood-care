@@ -32,6 +32,8 @@ let localStore = {
   system_settings: []
 };
 
+const mongo = require('./mongo');
+
 function loadLocalStore() {
   try {
     if (!fs.existsSync(LOCAL_DATA_DIR)) {
@@ -48,21 +50,85 @@ function loadLocalStore() {
   }
 }
 
-function saveLocalStore() {
+function saveLocalStore(tableName = null) {
   try {
     if (!fs.existsSync(LOCAL_DATA_DIR)) {
       fs.mkdirSync(LOCAL_DATA_DIR, { recursive: true });
     }
     fs.writeFileSync(LOCAL_DATA_FILE, JSON.stringify(localStore, null, 2), 'utf8');
+
+    // Asynchronously sync to MongoDB Atlas if connected
+    if (mongo.isMongoConnected()) {
+      if (tableName) {
+        syncTableToMongo(tableName);
+      } else {
+        Object.keys(localStore).forEach(t => syncTableToMongo(t));
+      }
+    }
   } catch (err) {
     console.error('[DB] Error saving local store:', err.message);
   }
 }
 
-// Check PG connection
+async function syncTableToMongo(tableName) {
+  if (!mongo.isMongoConnected()) return;
+  try {
+    const mongoDb = mongo.getDb();
+    if (!mongoDb || !localStore[tableName]) return;
+    const col = mongoDb.collection(tableName);
+    const records = localStore[tableName];
+    for (const record of records) {
+      const filter = record.id ? { id: record.id } : (record._id ? { _id: record._id } : null);
+      if (filter) {
+        await col.updateOne(filter, { $set: record }, { upsert: true });
+      }
+    }
+  } catch (err) {
+    // Non-blocking sync log
+    console.error(`[DB-Mongo] Sync error for ${tableName}:`, err.message);
+  }
+}
+
+async function hydrateFromMongo() {
+  if (!mongo.isMongoConnected()) return;
+  try {
+    const mongoDb = mongo.getDb();
+    if (!mongoDb) return;
+    const collections = Object.keys(localStore);
+    for (const colName of collections) {
+      const docs = await mongoDb.collection(colName).find({}).toArray();
+      if (docs && docs.length > 0) {
+        localStore[colName] = docs;
+      }
+    }
+    // Update local JSON cache
+    if (!fs.existsSync(LOCAL_DATA_DIR)) {
+      fs.mkdirSync(LOCAL_DATA_DIR, { recursive: true });
+    }
+    fs.writeFileSync(LOCAL_DATA_FILE, JSON.stringify(localStore, null, 2), 'utf8');
+    console.log('✔ [DB-Mongo] Data successfully synced from MongoDB Atlas.');
+  } catch (err) {
+    console.error('[DB-Mongo] Hydration error:', err.message);
+  }
+}
+
+// Check PG & MongoDB connections
 async function initDb() {
   loadLocalStore();
 
+  // 1. Connect MongoDB Atlas if configured
+  if (config.MONGODB_URI) {
+    try {
+      const mongoStatus = await mongo.connectMongo();
+      if (mongoStatus.isConnected) {
+        await hydrateFromMongo();
+      }
+    } catch (mErr) {
+      console.error('[DB] MongoDB init error:', mErr.message);
+    }
+  }
+
+  // 2. Check PG connection if configured
   const connectionString = config.DATABASE_URL || 
     `postgresql://${config.PGUSER}:${config.PGPASSWORD}@${config.PGHOST}:${config.PGPORT}/${config.PGDATABASE}`;
 
@@ -77,7 +143,6 @@ async function initDb() {
       connectionTimeoutMillis: 2000
     });
 
-    // Test connection with timeout
     const client = await pool.connect();
     await client.query('SELECT 1');
     client.release();
@@ -85,7 +150,6 @@ async function initDb() {
     usePg = true;
     console.log('✔ [DB] Successfully connected to PostgreSQL database.');
 
-    // Execute schema.sql on PostgreSQL
     const schemaPath = path.join(__dirname, 'schema.sql');
     if (fs.existsSync(schemaPath)) {
       const schemaSql = fs.readFileSync(schemaPath, 'utf8');
@@ -94,10 +158,12 @@ async function initDb() {
     }
   } catch (pgError) {
     usePg = false;
-    console.log(`ℹ [DB] PostgreSQL not detected locally (${pgError.message}). Operating in zero-config local persistent engine.`);
+    if (!mongo.isMongoConnected()) {
+      console.log(`ℹ [DB] PostgreSQL not detected locally. Operating in persistent engine mode.`);
+    }
   }
 
-  return { usePg };
+  return { usePg, useMongo: mongo.isMongoConnected() };
 }
 
 // Local store query simulator for standard CRUD
@@ -280,5 +346,8 @@ module.exports = {
   initDb,
   query,
   getStore: () => localStore,
-  saveStore: saveLocalStore
+  saveStore: saveLocalStore,
+  getMongoDb: mongo.getDb,
+  getMongoClient: mongo.getClient,
+  isMongoConnected: mongo.isMongoConnected
 };

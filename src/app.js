@@ -28,9 +28,28 @@ app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' }
 }));
 
-// CORS
+// Dynamic CORS to support tanviralamshifat.me, github.io, localhost & custom domains
+const allowedOrigins = [
+  'https://tanviralamshifat.me',
+  'https://www.tanviralamshifat.me',
+  'http://tanviralamshifat.me',
+  'http://www.tanviralamshifat.me',
+  'https://xutal001.github.io',
+  'http://localhost:5000',
+  'http://127.0.0.1:5500',
+  'http://localhost:3000'
+];
+
 app.use(cors({
-  origin: config.CORS_ORIGIN === '*' ? true : config.CORS_ORIGIN,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin) || config.CORS_ORIGIN === '*' || (config.CORS_ORIGIN && config.CORS_ORIGIN.split(',').map(s => s.trim()).includes(origin))) {
+      return callback(null, true);
+    }
+    if (origin.endsWith('.github.io') || origin.endsWith('.onrender.com') || origin.endsWith('.tanviralamshifat.me')) {
+      return callback(null, true);
+    }
+    return callback(null, true);
+  },
   credentials: true
 }));
 

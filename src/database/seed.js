@@ -5,6 +5,7 @@
 
 const bcrypt = require('bcryptjs');
 const db = require('./db');
+const config = require('../config/env');
 const { DEPARTMENTS, DHAKA_LOCATIONS } = require('../config/constants');
 
 async function seed() {
@@ -29,11 +30,11 @@ async function seed() {
     created_at: new Date().toISOString()
   }));
 
-  // 3. Seed Users & Passwords
+  // 3. Seed Users & Passwords (configurable via environment variables)
   const defaultHash = bcrypt.hashSync('student123', 10);
-  const modHash = bcrypt.hashSync('mod123', 10);
-  const adminHash = bcrypt.hashSync('admin123', 10);
-  const superHash = bcrypt.hashSync('super123', 10);
+  const modHash = bcrypt.hashSync(config.MODERATOR_PASSWORD || 'mod123', 10);
+  const adminHash = bcrypt.hashSync(config.ADMIN_PASSWORD || 'admin123', 10);
+  const superHash = bcrypt.hashSync(config.SUPERADMIN_PASSWORD || 'super123', 10);
 
   store.users = [
     {

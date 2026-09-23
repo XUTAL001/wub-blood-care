@@ -85,19 +85,27 @@ async function uploadAvatar(req, res) {
     }
 
     const avatarUrl = `uploads/avatars/${req.file.filename}`;
+    let avatarDataUrl = null;
+    try {
+      const fs = require('fs');
+      const buf = fs.readFileSync(req.file.path);
+      avatarDataUrl = `data:${req.file.mimetype || 'image/jpeg'};base64,${buf.toString('base64')}`;
+    } catch (fErr) { }
+
     const store = db.getStore();
     const profile = store.profiles.find(p => p.user_id === req.user.id);
 
     if (profile) {
-      profile.avatar_url = avatarUrl;
+      profile.avatar_url = avatarDataUrl || avatarUrl;
+      profile.avatar_file_path = avatarUrl;
       profile.updated_at = new Date().toISOString();
-      db.saveStore();
+      db.saveStore('profiles');
     }
 
     res.json({
       success: true,
       message: 'Profile photo updated.',
-      avatarUrl
+      avatarUrl: avatarDataUrl || avatarUrl
     });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Server error uploading avatar.' });
@@ -109,9 +117,15 @@ async function submitVerification(req, res) {
   try {
     const studentId = (req.body.student_id || req.user.student_id).trim();
     let docPath = null;
+    let docDataUrl = null;
 
     if (req.file) {
       docPath = `uploads/documents/${req.file.filename}`;
+      try {
+        const fs = require('fs');
+        const buf = fs.readFileSync(req.file.path);
+        docDataUrl = `data:${req.file.mimetype || 'application/octet-stream'};base64,${buf.toString('base64')}`;
+      } catch (fErr) { }
     }
 
     const store = db.getStore();
@@ -131,6 +145,7 @@ async function submitVerification(req, res) {
       user_id: req.user.id,
       student_id: studentId,
       id_card_document: docPath,
+      document_data_url: docDataUrl,
       status: 'pending',
       admin_notes: null,
       reviewed_by: null,
@@ -139,7 +154,7 @@ async function submitVerification(req, res) {
     };
 
     store.verification_requests.push(newRequest);
-    db.saveStore();
+    db.saveStore('verification_requests');
 
     await createNotification(
       req.user.id,

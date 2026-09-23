@@ -1,227 +1,259 @@
 {
   "departments": [
     {
+      "_id": "6ab3efac83fe0a3f2d8ce424",
       "id": 1,
       "code": "CSE",
-      "name": "Computer Science & Engineering",
-      "created_at": "2026-09-17T06:08:32.179Z"
+      "created_at": "2026-09-17T06:08:32.179Z",
+      "name": "Computer Science & Engineering"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce426",
       "id": 2,
       "code": "EEE",
-      "name": "Electrical & Electronic Engineering",
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "created_at": "2026-09-17T06:08:32.180Z",
+      "name": "Electrical & Electronic Engineering"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce428",
       "id": 3,
       "code": "BBA",
-      "name": "Business Administration",
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "created_at": "2026-09-17T06:08:32.180Z",
+      "name": "Business Administration"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce42a",
       "id": 4,
       "code": "ENG",
-      "name": "English",
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "created_at": "2026-09-17T06:08:32.180Z",
+      "name": "English"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce42c",
       "id": 5,
       "code": "PHARM",
-      "name": "Pharmacy",
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "created_at": "2026-09-17T06:08:32.180Z",
+      "name": "Pharmacy"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce42f",
       "id": 6,
       "code": "CIVIL",
-      "name": "Civil Engineering",
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "created_at": "2026-09-17T06:08:32.180Z",
+      "name": "Civil Engineering"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce431",
       "id": 7,
       "code": "LAW",
-      "name": "Law",
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "created_at": "2026-09-17T06:08:32.180Z",
+      "name": "Law"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce434",
       "id": 8,
       "code": "MPH",
-      "name": "Public Health",
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "created_at": "2026-09-17T06:08:32.180Z",
+      "name": "Public Health"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce436",
       "id": 9,
       "code": "THM",
-      "name": "Tourism & Hospitality Management",
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "created_at": "2026-09-17T06:08:32.180Z",
+      "name": "Tourism & Hospitality Management"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce438",
       "id": 10,
       "code": "ME",
-      "name": "Mechatronics Engineering",
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "created_at": "2026-09-17T06:08:32.180Z",
+      "name": "Mechatronics Engineering"
     }
   ],
   "locations": [
     {
+      "_id": "6ab3efac83fe0a3f2d8ce42b",
       "id": 1,
-      "name": "WUB Permanent Campus (Uttara)",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": true,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "WUB Permanent Campus (Uttara)"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce42e",
       "id": 2,
-      "name": "Uttara",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Uttara"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce432",
       "id": 3,
-      "name": "Mirpur",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Mirpur"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce435",
       "id": 4,
-      "name": "Pallabi",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Pallabi"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce437",
       "id": 5,
-      "name": "Mohakhali",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Mohakhali"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce439",
       "id": 6,
-      "name": "Dhanmondi",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Dhanmondi"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce43a",
       "id": 7,
-      "name": "Mohammadpur",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Mohammadpur"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce43b",
       "id": 8,
-      "name": "Gulshan",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Gulshan"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce43c",
       "id": 9,
-      "name": "Banani",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Banani"
     },
     {
+      "_id": "6ab3efad83fe0a3f2d8ce43d",
       "id": 10,
-      "name": "Farmgate",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Farmgate"
     },
     {
+      "_id": "6ab3efad83fe0a3f2d8ce43e",
       "id": 11,
-      "name": "Motijheel",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Motijheel"
     },
     {
+      "_id": "6ab3efad83fe0a3f2d8ce43f",
       "id": 12,
-      "name": "Badda",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Badda"
     },
     {
+      "_id": "6ab3efad83fe0a3f2d8ce440",
       "id": 13,
-      "name": "Rampura",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Rampura"
     },
     {
+      "_id": "6ab3efad83fe0a3f2d8ce441",
       "id": 14,
-      "name": "Tejgaon",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Tejgaon"
     },
     {
+      "_id": "6ab3efad83fe0a3f2d8ce442",
       "id": 15,
-      "name": "Agargaon",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Agargaon"
     },
     {
+      "_id": "6ab3efad83fe0a3f2d8ce443",
       "id": 16,
-      "name": "Kafrul",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Kafrul"
     },
     {
+      "_id": "6ab3efad83fe0a3f2d8ce444",
       "id": 17,
-      "name": "Khilkhet",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Khilkhet"
     },
     {
+      "_id": "6ab3efad83fe0a3f2d8ce445",
       "id": 18,
-      "name": "Bashundhara",
+      "created_at": "2026-09-17T06:08:32.180Z",
       "is_campus": false,
-      "created_at": "2026-09-17T06:08:32.180Z"
+      "name": "Bashundhara"
     }
   ],
   "users": [
     {
+      "_id": "6ab3efac83fe0a3f2d8ce429",
       "id": "usr_superadmin",
-      "student_id": "WUB-ADM-001",
-      "name": "Prof. Dr. M. Rahman",
+      "created_at": "2026-09-17T06:08:32.400Z",
       "email": "superadmin@wub.edu.bd",
-      "phone": "01711000001",
+      "is_verified": true,
+      "name": "Prof. Dr. M. Rahman",
       "password_hash": "$2a$10$rPLdapEGNSDBxDMKwjWKM.Lxsh7cq8/mJibiFbluayZyLCgNtMpfy",
+      "phone": "01711000001",
       "role": "super_admin",
       "status": "active",
-      "is_verified": true,
-      "created_at": "2026-09-17T06:08:32.400Z",
+      "student_id": "WUB-ADM-001",
       "updated_at": "2026-09-17T06:08:32.400Z"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce42d",
       "id": "usr_admin",
-      "student_id": "WUB-ADM-002",
-      "name": "Dr. Tanvir Ahmed",
+      "created_at": "2026-09-17T06:08:32.400Z",
       "email": "admin@wub.edu.bd",
-      "phone": "01711000002",
+      "is_verified": true,
+      "name": "Dr. Tanvir Ahmed",
       "password_hash": "$2a$10$/TVIZQJXpWiXsFCvdVnacOpUnwWK4aGZhxdU9YZFfcjE4dYn0ZoBu",
+      "phone": "01711000002",
       "role": "admin",
       "status": "active",
-      "is_verified": true,
-      "created_at": "2026-09-17T06:08:32.400Z",
+      "student_id": "WUB-ADM-002",
       "updated_at": "2026-09-17T06:08:32.400Z"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce430",
       "id": "usr_moderator",
-      "student_id": "WUB-MOD-001",
-      "name": "Nusrat Jahan",
+      "created_at": "2026-09-17T06:08:32.401Z",
       "email": "moderator@wub.edu.bd",
-      "phone": "01711000003",
+      "is_verified": true,
+      "name": "Nusrat Jahan",
       "password_hash": "$2a$10$mLNZtw5hjuHFfWGx7K9mpesvttp3UsYXl4gZHGLOZ/MHJ0GQANmLi",
+      "phone": "01711000003",
       "role": "moderator",
       "status": "active",
-      "is_verified": true,
-      "created_at": "2026-09-17T06:08:32.401Z",
+      "student_id": "WUB-MOD-001",
       "updated_at": "2026-09-17T06:08:32.401Z"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce433",
       "id": "usr_tanviralamshifat",
-      "student_id": "tanviralamshifat",
-      "name": "Tanvir Alam Shifat",
+      "created_at": "2026-09-23T09:30:00.000Z",
       "email": "tanviralamshifat@wub.edu.bd",
-      "phone": "01711000000",
+      "is_verified": true,
+      "name": "Tanvir Alam Shifat",
       "password_hash": "$2a$10$jhZ8wBUpRx7D0MMnqmpybe.gEojfxZl6IkNfvXQCnTcSgRemM7IH2",
+      "phone": "01711000000",
       "role": "super_admin",
       "status": "active",
-      "is_verified": true,
-      "created_at": "2026-09-23T09:30:00.000Z",
+      "student_id": "tanviralamshifat",
       "updated_at": "2026-09-23T09:30:00.000Z"
     }
   ],
@@ -288,25 +320,27 @@
   "reports": [],
   "audit_logs": [
     {
+      "_id": "6ab3efac83fe0a3f2d8ce425",
       "id": "aud_1790155884996_94ec2d",
-      "actor_id": "usr_tanviralamshifat",
       "action": "USER_LOGIN",
-      "target_type": "USER",
-      "target_id": "usr_tanviralamshifat",
+      "actor_id": "usr_tanviralamshifat",
+      "created_at": "2026-09-23T09:31:24.996Z",
       "details": "{}",
       "ip_address": "::1",
-      "created_at": "2026-09-23T09:31:24.996Z",
+      "target_id": "usr_tanviralamshifat",
+      "target_type": "USER",
       "updated_at": "2026-09-23T09:31:24.996Z"
     },
     {
+      "_id": "6ab3efac83fe0a3f2d8ce427",
       "id": "aud_1790155890114_fc4b7d",
-      "actor_id": "usr_tanviralamshifat",
       "action": "USER_LOGIN",
-      "target_type": "USER",
-      "target_id": "usr_tanviralamshifat",
+      "actor_id": "usr_tanviralamshifat",
+      "created_at": "2026-09-23T09:31:30.114Z",
       "details": "{}",
       "ip_address": "::1",
-      "created_at": "2026-09-23T09:31:30.114Z",
+      "target_id": "usr_tanviralamshifat",
+      "target_type": "USER",
       "updated_at": "2026-09-23T09:31:30.115Z"
     }
   ],

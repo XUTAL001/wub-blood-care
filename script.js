@@ -15,6 +15,26 @@
 })();
 
 // ==========================================================================
+// API ROUTING & BACKEND CONNECTION MANAGER
+// ==========================================================================
+// On localhost, calls use relative path. On live production (tanviralamshifat.me),
+// calls automatically route to the cloud backend.
+(function () {
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const defaultLiveApi = 'https://wub-blood-care-api.onrender.com';
+  
+  window.WUB_API_BASE = isLocal ? '' : (localStorage.getItem('WUB_API_BASE') || defaultLiveApi);
+
+  const _origFetch = window.fetch;
+  window.fetch = function (resource, init) {
+    if (typeof resource === 'string' && resource.startsWith('/api/')) {
+      resource = window.WUB_API_BASE + resource;
+    }
+    return _origFetch.apply(this, [resource, init]);
+  };
+})();
+
+// ==========================================================================
 // 1. STANDARDIZED CONSTANTS & DHAKA LOCATIONS
 // ==========================================================================
 const DHAKA_LOCATIONS = [
